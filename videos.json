@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "title": "Welcome to Nash Wu 17",
+    "desc": "This is a placeholder video. Please configure GitHub Secrets to fetch real videos.",
+    "thumbnail": "https://picsum.photos/seed/nash/800/450",
+    "url": "https://www.youtube.com/@Nash_Wu_17"
+  },
+  {
+    "id": "2",
+    "title": "Tokyo Trip: SHIBUYA SKY",
+    "desc": "The new landmark of Tokyo, 360 degree view!",
+    "thumbnail": "https://picsum.photos/seed/tokyo/800/450",
+    "url": "https://www.youtube.com/@Nash_Wu_17"
+  },
+  {
+    "id": "3",
+    "title": "iPhone 15 Pro Max Review",
+    "desc": "Is Titanium really lighter? 1 Month usage review.",
+    "thumbnail": "https://picsum.photos/seed/iphone/800/450",
+    "url": "https://www.youtube.com/@Nash_Wu_17"
+  }
+]
