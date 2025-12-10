@@ -8,6 +8,13 @@ YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY")
 CHANNEL_ID = os.environ.get("CHANNEL_ID")
 OUTPUT_FILE = "videos.json"
 
+# 設定 Header 以通過 Google API 的網域限制 (HTTP Referrer restriction)
+# 這讓 GitHub Actions 的請求看起來像是從網站發出的
+HEADERS = {
+    "Referer": "https://nashwu0117.github.io/NashWu-Portfolio/",
+    "User-Agent": "Mozilla/5.0 (compatible; NashWuPortfolio/1.0; +https://nashwu0117.github.io/NashWu-Portfolio/)"
+}
+
 # Default/Fallback Data (Used if API fails or Key is invalid)
 # 這裡的資料會在 API 失敗時顯示在網站上，確保版面不會空白
 FALLBACK_DATA = [
@@ -47,8 +54,9 @@ def fetch_videos():
     api_url = f"https://www.googleapis.com/youtube/v3/search?key={YOUTUBE_API_KEY}&channelId={CHANNEL_ID}&part=snippet,id&order=date&maxResults=6&type=video"
 
     try:
-        # 2. 發送請求
-        response = requests.get(api_url)
+        # 2. 發送請求 (加入 headers)
+        print("Sending request with Referer headers...")
+        response = requests.get(api_url, headers=HEADERS)
         
         # 3. 檢查回應狀態碼 (Handle 403, 404, 500 errors gracefully)
         if response.status_code != 200:
