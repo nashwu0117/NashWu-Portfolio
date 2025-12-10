@@ -410,12 +410,12 @@
         // Updated to use onclick for Modal
         function createVideoCard(video) {
             // Check if we have a real ID or if it's a link
-            // If it's a full URL and no ID, we might need to parse ID or just fallback to link
-            const videoId = video.id; 
+            // Use ID if length > 5 (simple heuristic for real YouTube ID vs placeholder "1")
+            const isEmbeddable = video.id && video.id.length > 5;
             
             // If we have an ID, use modal. If not (fallback URL), use regular link.
-            const clickAction = videoId && videoId.length < 20 ? `onclick="playVideo('${videoId}')"` : `href="${video.url}" target="_blank"`;
-            const wrapperTag = videoId && videoId.length < 20 ? 'div' : 'a';
+            const clickAction = isEmbeddable ? `onclick="playVideo('${video.id}')"` : `href="${video.url}" target="_blank"`;
+            const wrapperTag = isEmbeddable ? 'div' : 'a';
 
             return `
                 <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
