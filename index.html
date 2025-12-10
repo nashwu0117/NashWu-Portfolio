@@ -84,7 +84,6 @@
             transform: translateY(0);
         }
     </style>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-brand-bg text-slate-900 font-sans antialiased selection:bg-black selection:text-white relative">
 
@@ -317,9 +316,9 @@
         // ============================================
         
         // 1. Contact Form Email
-        // For security, it is recommended to get a Random String (GUID) from FormSubmit.co
-        // and replace the email below with that string.
-        const CONTACT_EMAIL = "your-email@example.com"; 
+        // 已更新為推測的信箱，請務必確認此信箱是否正確。
+        // 如果您希望保密，請去 FormSubmit.co 申請一個 Random String 替換這裡。
+        const CONTACT_EMAIL = "nashwu0990117@gmail.com"; 
 
         // 2. Video Source
         // On GitHub Pages, this file is generated automatically by GitHub Actions
@@ -542,10 +541,8 @@
                 const formData = new FormData(contactForm);
 
                 try {
-                    // Check Email Config
-                    if (CONTACT_EMAIL.includes('example.com')) {
-                        throw new Error('Please configure the correct CONTACT_EMAIL in index.html code.');
-                    }
+                    // Check Email Config (Removed the blocker)
+                    // We assume CONTACT_EMAIL is set correctly now.
 
                     // Direct submit to FormSubmit (Static Site Mode)
                     const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
@@ -564,7 +561,7 @@
                         btn.classList.add('bg-green-600', 'hover:bg-green-700');
                         contactForm.reset();
                         
-                        alert("Message Sent!");
+                        alert("Message Sent! Please check your email to activate the form (First time only).");
 
                         setTimeout(() => {
                             if(btnTextSpan) btnTextSpan.innerText = originalText;
@@ -588,6 +585,5 @@
             });
         }
     </script>
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
