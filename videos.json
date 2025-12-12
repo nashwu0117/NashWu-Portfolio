@@ -1,23 +1,44 @@
 [
   {
-    "id": "1",
-    "title": "Welcome to Nash Wu 17",
-    "desc": "This is a placeholder video. Please configure GitHub Secrets to fetch real videos.",
-    "thumbnail": "https://picsum.photos/seed/nash/800/450",
-    "url": "https://www.youtube.com/@Nash_Wu_17"
+    "id": "pb8SNr0_YTk",
+    "title": "解密 Vibe Coding：原理、應用與操作指南搭配最新的Gemini 3 Pro",
+    "desc": "歡迎來到Nash Wu 的頻道！   厭倦了繁瑣的程式碼撰寫？Vibe Coding 或許能為你帶來全新的體驗！這份「解密Vibe Coding」的 ...",
+    "thumbnail": "https://i.ytimg.com/vi/pb8SNr0_YTk/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=pb8SNr0_YTk"
   },
   {
-    "id": "2",
-    "title": "Tokyo Trip: SHIBUYA SKY",
-    "desc": "The new landmark of Tokyo, 360 degree view!",
-    "thumbnail": "https://picsum.photos/seed/tokyo/800/450",
-    "url": "https://www.youtube.com/@Nash_Wu_17"
+    "id": "q2aDNzGwRNA",
+    "title": "在新竹數位實驗高中的一天",
+    "desc": "歡迎來到Nash Wu 的頻道！   我的高中生活小小記錄~ 這是一個分享生活點滴、深度旅遊體驗與最新科技產品的頻道。",
+    "thumbnail": "https://i.ytimg.com/vi/q2aDNzGwRNA/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=q2aDNzGwRNA"
   },
   {
-    "id": "3",
-    "title": "iPhone 15 Pro Max Review",
-    "desc": "Is Titanium really lighter? 1 Month usage review.",
-    "thumbnail": "https://picsum.photos/seed/iphone/800/450",
-    "url": "https://www.youtube.com/@Nash_Wu_17"
+    "id": "a-fcqej0p5k",
+    "title": "新加坡🇸🇬三天自由行",
+    "desc": "歡迎來到Nash Wu 的頻道！   這部影片是我去新加坡拍攝的,裡面有F1博物館、魚尾獅、等...的景點，希望你們喜歡！",
+    "thumbnail": "https://i.ytimg.com/vi/a-fcqej0p5k/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=a-fcqej0p5k"
+  },
+  {
+    "id": "jIopBVDWAmo",
+    "title": "新加坡🇸🇬Day2",
+    "desc": "歡迎來到 Nash Wu 的頻道！   這部影片是我去新加坡拍攝的,裡面有F1博物館、魚尾獅、等...的景點，希望你們喜歡！",
+    "thumbnail": "https://i.ytimg.com/vi/jIopBVDWAmo/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=jIopBVDWAmo"
+  },
+  {
+    "id": "w6B8nqfJ8gM",
+    "title": "新加坡🇸🇬Day1",
+    "desc": "歡迎來到Nash Wu 的頻道！   這部影片是我去新加坡拍攝的,裡面有F1博物館、魚尾獅、等...的景點，希望你們喜歡！",
+    "thumbnail": "https://i.ytimg.com/vi/w6B8nqfJ8gM/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=w6B8nqfJ8gM"
+  },
+  {
+    "id": "C-3yqilI-P8",
+    "title": "歷史移民菜系報告『異遊味近』",
+    "desc": "歡迎來到Nash Wu 的頻道！   學校歷史課的小活動讓大家更了解文化！ 這是一個分享生活點滴、深度旅遊體驗與最新科技產品的 ...",
+    "thumbnail": "https://i.ytimg.com/vi/C-3yqilI-P8/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=C-3yqilI-P8"
   }
 ]
