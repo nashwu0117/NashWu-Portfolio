@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,7 +47,8 @@
         /* Carousel Transitions */
         .carousel-track-container {
             position: relative;
-            min-height: 420px; /* Reserve space for cards */
+            transition: height 0.3s ease-out; 
+            min-height: 200px; /* Base height to prevent total collapse */
         }
         .carousel-slide {
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
@@ -85,7 +86,7 @@
         }
     </style>
 </head>
-<body class="bg-brand-bg text-slate-900 font-sans antialiased selection:bg-black selection:text-white relative">
+<body class="bg-brand-bg text-slate-900 font-sans antialiased selection:bg-black selection:text-white relative overflow-x-hidden">
 
     <!-- Navbar -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-4">
@@ -134,11 +135,11 @@
 
         <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
             <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-black drop-shadow-sm">
-                NASH WU 17
-                <span class="block text-2xl md:text-4xl mt-4 font-normal text-slate-700">DISCOVERY</span>
+                Nash Wu 17
+                <span class="block text-2xl md:text-4xl mt-4 font-normal text-slate-700">Explore My Channel</span>
             </h1>
             <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Sharing life moments, in-depth travel experiences, and the latest tech gadgets.
+                分享生活點滴、深度旅遊體驗與最新科技產品的頻道
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="https://www.youtube.com/@Nash_Wu_17" target="_blank" class="px-8 py-4 bg-black text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all hover:scale-105 shadow-lg flex items-center justify-center gap-2">
@@ -146,7 +147,7 @@
                     Watch Latest
                 </a>
                 <a href="#portfolio" class="px-8 py-4 bg-transparent border-2 border-black text-black rounded-full font-bold text-lg hover:bg-black hover:text-white transition-all hover:scale-105 flex items-center justify-center gap-2">
-                    My Portfolio
+                    My Featured Work
                 </a>
             </div>
         </div>
@@ -160,10 +161,10 @@
                     <h2 class="text-sm font-bold tracking-widest text-slate-500 uppercase mb-2">Who Am I</h2>
                     <h2 class="text-4xl font-bold mb-6 text-black">Hello! I am Nash!</h2>
                     <div class="space-y-4 text-slate-700 text-lg leading-relaxed">
-                        <p>🌍 Life | Creator | Travel | YouTuber 🎥</p>
-                        <p>This channel shares life moments, in-depth travel experiences, and the latest tech products.</p>
-                        <p>🌍 Travel VLOG: Exploring hidden gems domestic and abroad, providing the latest travel guides for backpackers and independent travelers alike!<br></p>
-                        <p>🏠 Life Log: Sharing moments of my daily life and various lifestyle aspects.</p>
+                        <p>🌍 生活 | 創作者 | 旅遊 | YouTuber 🎥</p>    
+                        <p>這是一個分享生活點滴、深度旅遊體驗與最新科技產品的頻道。</p>
+                        <p>🌍 旅遊 VLOG： 帶您探索國內外旅遊的秘境、最新的旅遊攻略，不論是自由行還是背包客的經驗，都讓您一手掌握！<br></p>
+                        <p>🏠 生活記錄： 分享我的日常生活和各種生活風格的點滴。</p>
                     </div>
                 </div>
                 <div class="order-1 md:order-2 flex justify-center relative">
@@ -177,32 +178,50 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="py-24 overflow-hidden">
+    <section id="portfolio" class="py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-black mb-4">My Portfolio</h2>
-                <p class="text-slate-600 max-w-2xl mx-auto">Selected Videos & Content (Popular Uploads)</p>
+                <h2 class="text-4xl font-bold text-black mb-4">My Featured Work</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">精選影片與創作內容</p>
             </div>
 
             <!-- Carousel Container -->
-            <div class="relative flex items-center">
+            <div class="relative">
                 
                 <!-- Videos Track -->
                 <div id="carousel-track" class="w-full carousel-track-container">
                     <!-- Loading State (Will be replaced by JS) -->
-                    <div class="flex justify-center items-center h-full">
+                    <div class="flex justify-center items-center h-full min-h-[400px]">
                         <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-black"></div>
                     </div>
                 </div>
 
-                <!-- Navigation Arrows (Now always visible for looping) -->
-                <button id="next-btn" class="absolute -right-2 md:-right-12 top-1/2 -translate-y-1/2 z-20 bg-black text-white p-3 rounded-full hover:bg-slate-700 hover:scale-110 transition-all shadow-lg focus:outline-none hidden">
-                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
-                </button>
-                
-                <button id="prev-btn" class="absolute -left-2 md:-left-12 top-1/2 -translate-y-1/2 z-20 bg-white text-black border border-black p-3 rounded-full hover:bg-slate-100 hover:scale-110 transition-all shadow-lg focus:outline-none hidden">
-                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
-                </button>
+                <!-- Navigation Controls -->
+                <div class="flex justify-center gap-6 mt-6 md:mt-0 md:block pointer-events-none md:absolute md:inset-0">
+                    
+                    <!-- Prev Button: Removed invalid CSS comments from class attribute -->
+                    <button id="prev-btn" class="
+                        hidden
+                        pointer-events-auto cursor-pointer
+                        p-3 bg-white text-black border border-black 
+                        md:absolute md:top-1/2 md:-translate-y-1/2 md:-left-12
+                        rounded-full shadow-lg transition-all focus:outline-none hover:scale-110 hover:bg-slate-100
+                    ">
+                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                    </button>
+                    
+                    <!-- Next Button: Removed invalid CSS comments from class attribute -->
+                    <button id="next-btn" class="
+                        hidden
+                        pointer-events-auto cursor-pointer
+                        p-3 bg-black text-white border border-transparent
+                        md:absolute md:top-1/2 md:-translate-y-1/2 md:-right-12
+                        rounded-full shadow-lg transition-all focus:outline-none hover:scale-110 hover:bg-slate-800
+                    ">
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                    </button>
+
+                </div>
 
             </div>
 
@@ -219,8 +238,8 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-black/5">
                 <div class="text-center mb-10">
-                    <h2 class="text-3xl font-bold text-black mb-3">Contact Me</h2>
-                    <p class="text-slate-500">Got questions or collaboration proposals? Leave a message!</p>
+                    <h2 class="text-3xl font-bold text-black mb-3">Get in Touch</h2>
+                    <p class="text-slate-500">Have questions or just want to say hello? Drop a message!</p>
                 </div>
 
                 <form id="contact-form" class="space-y-6">
@@ -346,6 +365,7 @@
         let ALL_VIDEOS = [];
         let currentSlide = 0;
         let totalChunks = 0;
+        let resizeTimer;
 
         lucide.createIcons();
         document.getElementById('year').textContent = new Date().getFullYear();
@@ -435,11 +455,16 @@
             `;
         }
 
+        // Determine Chunk Size based on width (1 for mobile, 3 for desktop)
+        function getChunkSize() {
+            return window.innerWidth < 768 ? 1 : 3;
+        }
+
         function renderCarousel(videos) {
             const track = document.getElementById('carousel-track');
             track.innerHTML = ''; 
 
-            const chunkSize = 3;
+            const chunkSize = getChunkSize(); // Dynamic Size
             const chunks = [];
             for (let i = 0; i < videos.length; i += chunkSize) {
                 chunks.push(videos.slice(i, i + chunkSize));
@@ -463,8 +488,9 @@
                     slide.insertAdjacentHTML('beforeend', createVideoCard(video));
                 });
 
-                if(chunk.length < 3) {
-                    for(let i=0; i < (3 - chunk.length); i++) {
+                // Fill empty slots for grid consistency on desktop
+                if(chunkSize > 1 && chunk.length < chunkSize) {
+                    for(let i=0; i < (chunkSize - chunk.length); i++) {
                         slide.insertAdjacentHTML('beforeend', `<div class="hidden md:block"></div>`);
                     }
                 }
@@ -492,10 +518,27 @@
 
         function updateCarouselView() {
             const slides = document.querySelectorAll('.carousel-slide');
+            const track = document.getElementById('carousel-track');
+            
             slides.forEach((slide, idx) => {
                 if(idx === currentSlide) {
                     slide.classList.remove('carousel-hidden');
                     slide.classList.add('carousel-active');
+                    
+                    // Improved Height Update Logic to prevent overlap
+                    const updateHeight = () => {
+                         if(track && slide.offsetHeight > 0) {
+                            track.style.height = slide.offsetHeight + 'px';
+                        }
+                    };
+                    
+                    // Check immediately
+                    updateHeight();
+                    // Check shortly after (e.g., text rendering)
+                    setTimeout(updateHeight, 50);
+                    // Check after image potential load delay
+                    setTimeout(updateHeight, 300);
+
                 } else {
                     slide.classList.add('carousel-hidden');
                     slide.classList.remove('carousel-active');
@@ -503,6 +546,15 @@
             });
         }
         
+        // Handle Resize to Switch Modes (Mobile <-> Desktop)
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                currentSlide = 0; // Reset to start
+                renderCarousel(ALL_VIDEOS);
+            }, 250);
+        });
+
         document.getElementById('next-btn').addEventListener('click', () => {
             if (totalChunks > 1) {
                 currentSlide = (currentSlide + 1) % totalChunks;
