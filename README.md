@@ -46,4 +46,4 @@ This project is a static site hosted on GitHub Pages, utilizing **GitHub Actions
 This website is designed for the Nash Wu 17 personal brand. Please do not copy or reproduce the visual design without permission.
 
 ---
-© Nash Wu 17. All rights reserved.
+© Nash Wu . All rights reserved.
