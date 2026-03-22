@@ -3,6 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ── Security Headers ── -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://unpkg.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        font-src https://fonts.gstatic.com;
+        img-src 'self' https: data:;
+        frame-src https://www.youtube.com;
+        connect-src 'self' https://formsubmit.co;
+    ">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+
     <title>Nash Wu — Creator & YouTuber</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
@@ -173,8 +188,6 @@
         .social-grid { display: flex; flex-wrap: wrap; gap: 10px; }
         .social-btn { display: flex; align-items: center; gap: 8px; padding: 9px 18px; border: 1px solid var(--border); border-radius: 100px; color: var(--muted); text-decoration: none; font-size: 0.76rem; font-weight: 500; transition: all 0.3s; }
         .social-btn:hover { border-color: var(--accent); color: var(--accent); }
-        .social-btn img { width: 16px; height: 16px; object-fit: contain; opacity: 0.6; }
-        .social-btn:hover img { opacity: 1; }
         .contact-form { display: flex; flex-direction: column; gap: 18px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
         @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
@@ -186,6 +199,9 @@
         .form-submit { background: var(--accent); color: var(--bg); border: none; padding: 15px 32px; border-radius: 100px; font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: inherit; }
         .form-submit:hover { background: var(--accent2); transform: translateY(-2px); }
         .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        /* Honeypot */
+        .hp-field { display: none !important; }
 
         /* FOOTER */
         footer { border-top: 1px solid var(--border); padding: 44px 0; }
@@ -225,7 +241,7 @@
             <a href="#portfolio">Work</a>
             <a href="#contact" class="nav-cta">Contact</a>
         </div>
-        <button class="nav-mobile-btn" id="mobile-menu-btn">
+        <button class="nav-mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
             <i data-lucide="menu" style="width:24px;height:24px"></i>
         </button>
     </div>
@@ -240,14 +256,14 @@
 <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
-    <div class="hero-deco">NW</div>
+    <div class="hero-deco" aria-hidden="true">NW</div>
     <div class="hero-inner">
         <div class="hero-label">YouTuber · Creator · Traveller</div>
         <h1 class="hero-title">Nash<br><em>Wu</em></h1>
         <p class="hero-subtitle">Explore My Channel</p>
         <p class="hero-desc">分享生活點滴、深度旅遊體驗與最新科技產品的頻道。帶你看見世界不同的角落。</p>
         <div class="hero-btns">
-            <a href="https://www.youtube.com/@Nash_Wu_17" target="_blank" class="btn-primary">
+            <a href="https://www.youtube.com/@Nash_Wu_17" target="_blank" rel="noopener noreferrer" class="btn-primary">
                 <i data-lucide="play-circle" style="width:18px;height:18px"></i>
                 Watch on YouTube
             </a>
@@ -257,7 +273,7 @@
             </a>
         </div>
     </div>
-    <div class="hero-scroll">
+    <div class="hero-scroll" aria-hidden="true">
         <i data-lucide="mouse" style="width:15px;height:15px"></i>
         Scroll
     </div>
@@ -282,7 +298,7 @@
         </div>
         <div class="stats-div"></div>
         <div class="stat-item">
-            <span class="stat-num">旅遊 · 生活 · 旅遊</span>
+            <span class="stat-num">旅遊 · 生活 · 科技</span>
             <span class="stat-label">Content</span>
         </div>
     </div>
@@ -307,10 +323,10 @@
             </div>
         </div>
         <div class="about-img-wrap fade-up">
-            <div class="about-img-deco1"></div>
-            <div class="about-img-deco2"></div>
+            <div class="about-img-deco1" aria-hidden="true"></div>
+            <div class="about-img-deco2" aria-hidden="true"></div>
             <div class="about-img-frame">
-                <img src="pic_pack/NashWu.png" alt="Nash Wu">
+                <img src="pic_pack/NashWu.png" alt="Nash Wu profile photo">
                 <div class="about-badge">
                     <div class="badge-name">Nash Wu</div>
                     <div class="badge-role">Creator · YouTuber</div>
@@ -335,14 +351,14 @@
                 <div class="carousel-viewport">
                     <div class="carousel-track" id="carousel-track"></div>
                 </div>
-                <button class="carousel-btn prev" onclick="carouselMove(-1)">
+                <button class="carousel-btn prev" onclick="carouselMove(-1)" aria-label="Previous">
                     <i data-lucide="chevron-left" style="width:18px;height:18px"></i>
                 </button>
-                <button class="carousel-btn next" onclick="carouselMove(1)">
+                <button class="carousel-btn next" onclick="carouselMove(1)" aria-label="Next">
                     <i data-lucide="chevron-right" style="width:18px;height:18px"></i>
                 </button>
             </div>
-            <div class="carousel-dots" id="carousel-dots"></div>
+            <div class="carousel-dots" id="carousel-dots" role="tablist"></div>
             <div style="text-align:center;margin-top:40px">
                 <button class="lib-toggle" id="lib-toggle-btn" onclick="toggleLibrary()">
                     <span id="lib-btn-text">View Full Library</span>
@@ -368,47 +384,49 @@
             <h2 class="contact-title">Let's<br><em>Connect</em></h2>
             <p class="contact-desc">Have questions or just want to say hello? Drop a message! Also feel free to find me on social media.</p>
             <div class="social-grid">
-                <a href="https://instagram.com/nash_wu_17" target="_blank" class="social-btn">
+                <a href="https://instagram.com/nash_wu_17" target="_blank" rel="noopener noreferrer" class="social-btn">
                     <i data-lucide="instagram" style="width:16px;height:16px"></i> Instagram
                 </a>
-                <a href="https://www.youtube.com/@Nash_Wu_17" target="_blank" class="social-btn">
+                <a href="https://www.youtube.com/@Nash_Wu_17" target="_blank" rel="noopener noreferrer" class="social-btn">
                     <i data-lucide="youtube" style="width:16px;height:16px"></i> YouTube
                 </a>
-                <a href="https://threads.com/@nash_wu_17" target="_blank" class="social-btn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg>
+                <a href="https://threads.com/@nash_wu_17" target="_blank" rel="noopener noreferrer" class="social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg>
                     Threads
                 </a>
-                <a href="https://vocus.cc/salon/nash_wu_17" target="_blank" class="social-btn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                <a href="https://vocus.cc/salon/nash_wu_17" target="_blank" rel="noopener noreferrer" class="social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                     Vocus
                 </a>
-                <a href="https://linktr.ee/nash_wu_17" target="_blank" class="social-btn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                <a href="https://linktr.ee/nash_wu_17" target="_blank" rel="noopener noreferrer" class="social-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                     Linktree
                 </a>
             </div>
         </div>
         <div class="fade-up">
-            <form class="contact-form" id="contact-form">
+            <form class="contact-form" id="contact-form" novalidate>
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
+                <!-- Honeypot：機器人才會填這個欄位 -->
+                <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off">
                 <div class="form-row">
                     <div class="form-group">
-                        <label class="form-label">Name</label>
-                        <input type="text" name="name" required placeholder="Your Name" class="form-input">
+                        <label class="form-label" for="field-name">Name</label>
+                        <input type="text" id="field-name" name="name" required maxlength="100" placeholder="Your Name" class="form-input" autocomplete="name">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Email</label>
-                        <input type="email" name="email" required placeholder="your@email.com" class="form-input">
+                        <label class="form-label" for="field-email">Email</label>
+                        <input type="email" id="field-email" name="email" required maxlength="200" placeholder="your@email.com" class="form-input" autocomplete="email">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Subject</label>
-                    <input type="text" name="subject" required placeholder="Collaboration, Feedback..." class="form-input">
+                    <label class="form-label" for="field-subject">Subject</label>
+                    <input type="text" id="field-subject" name="subject" required maxlength="200" placeholder="Collaboration, Feedback..." class="form-input">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Message</label>
-                    <textarea name="message" required rows="5" placeholder="Type your message here..." class="form-textarea"></textarea>
+                    <label class="form-label" for="field-message">Message</label>
+                    <textarea id="field-message" name="message" required rows="5" maxlength="2000" placeholder="Type your message here..." class="form-textarea"></textarea>
                 </div>
                 <button type="submit" class="form-submit">
                     <span>Send Message</span>
@@ -422,21 +440,21 @@
 <!-- Footer -->
 <footer>
     <div class="footer-inner">
-        <div class="footer-brand">Nash<em>Wu</em> </div>
+        <div class="footer-brand">Nash<em>Wu</em> 17</div>
         <span class="footer-copy">© <span id="year"></span> Nash Wu. All rights reserved.</span>
-        <button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
             Back to top <i data-lucide="arrow-up" style="width:13px;height:13px"></i>
         </button>
     </div>
 </footer>
 
 <!-- Modal -->
-<div id="video-modal">
+<div id="video-modal" role="dialog" aria-modal="true" aria-label="Video player">
     <div class="modal-content">
-        <button class="modal-close" onclick="closeVideo()">
+        <button class="modal-close" onclick="closeVideo()" aria-label="Close video">
             <i data-lucide="x" style="width:15px;height:15px"></i>
         </button>
-        <iframe id="youtube-player" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="youtube-player" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube video player"></iframe>
     </div>
     <div class="modal-bg" onclick="closeVideo()"></div>
 </div>
@@ -450,6 +468,13 @@
         { id: '3', title: 'Top 5 Ramen in Taipei', thumbnail: 'https://picsum.photos/seed/ramen/800/450', desc: 'Worth the 2 hour wait? Locals recommend.' },
     ];
     let ALL_VIDEOS = [], carouselIndex = 0, slidesPerView = 3, libraryOpen = false;
+
+    // ── 安全：sanitize 文字，防止 XSS ──
+    function sanitize(str) {
+        const d = document.createElement('div');
+        d.textContent = String(str || '');
+        return d.innerHTML;
+    }
 
     lucide.createIcons();
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -478,17 +503,24 @@
         } catch { return FALLBACK_VIDEOS.map(v => ({ ...v, url: `https://www.youtube.com/watch?v=${v.id}` })); }
     }
 
+    // ── 安全：video ID 白名單驗證 ──
+    function isValidVideoId(id) {
+        return typeof id === 'string' && /^[a-zA-Z0-9_-]{6,20}$/.test(id);
+    }
+
     function createCard(video, isSlide = false) {
-        const isEmbed = video.id && video.id.length > 5;
-        const clickAttr = isEmbed ? `onclick="playVideo('${video.id}')"` : `onclick="window.open('${video.url||'#'}','_blank')"`;
+        const isEmbed = isValidVideoId(video.id);
+        const clickAttr = isEmbed
+            ? `onclick="playVideo('${sanitize(video.id)}')" role="button" tabindex="0"`
+            : `onclick="window.open('${encodeURI(video.url||'')}','_blank','noopener,noreferrer')" role="button" tabindex="0"`;
         return `<div class="video-card ${isSlide ? 'carousel-slide' : ''}" ${clickAttr}>
             <div class="video-thumb">
-                <img src="${video.thumbnail}" alt="${video.title}" loading="lazy">
-                <div class="video-overlay"><div class="play-btn"><i data-lucide="play" style="width:20px;height:20px;margin-left:3px"></i></div></div>
+                <img src="${sanitize(video.thumbnail)}" alt="${sanitize(video.title)}" loading="lazy">
+                <div class="video-overlay" aria-hidden="true"><div class="play-btn"><i data-lucide="play" style="width:20px;height:20px;margin-left:3px"></i></div></div>
             </div>
             <div class="video-info">
-                <div class="video-title">${video.title}</div>
-                <div class="video-desc">${video.desc}</div>
+                <div class="video-title">${sanitize(video.title)}</div>
+                <div class="video-desc">${sanitize(video.desc)}</div>
             </div>
         </div>`;
     }
@@ -503,6 +535,7 @@
         for (let i = 0; i <= max; i++) {
             const d = document.createElement('button');
             d.className = 'dot' + (i === carouselIndex ? ' active' : '');
+            d.setAttribute('aria-label', `Go to slide ${i + 1}`);
             d.onclick = () => goToSlide(i);
             el.appendChild(d);
         }
@@ -546,9 +579,10 @@
         renderDots();
     }
 
-    // Modal
+    // ── 安全：Modal 只允許合法 video ID ──
     function playVideo(id) {
-        document.getElementById('youtube-player').src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+        if (!isValidVideoId(id)) return;
+        document.getElementById('youtube-player').src = `https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
         document.getElementById('video-modal').classList.add('open');
         document.body.style.overflow = 'hidden';
     }
@@ -559,15 +593,25 @@
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
 
-    // Contact
+    // ── 安全：聯絡表單 + Honeypot 驗證 ──
     document.getElementById('contact-form').addEventListener('submit', async e => {
         e.preventDefault();
+
+        // Honeypot 檢查：有填就是機器人，直接丟棄
+        const honey = e.target.querySelector('input[name="_honey"]');
+        if (honey && honey.value.trim() !== '') return;
+
         const btn = e.target.querySelector('button[type="submit"]');
         const span = btn.querySelector('span');
         span.textContent = 'Sending...';
         btn.disabled = true;
+
         try {
-            const r = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, { method: 'POST', body: new FormData(e.target), headers: { 'Accept': 'application/json' } });
+            const r = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+                method: 'POST',
+                body: new FormData(e.target),
+                headers: { 'Accept': 'application/json' }
+            });
             if (r.ok) { span.textContent = 'Sent! ✓'; e.target.reset(); }
             else throw new Error();
         } catch { span.textContent = 'Error, try again.'; }
