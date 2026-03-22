@@ -416,15 +416,21 @@
 
         function goToSlide(idx) {
             const track = document.getElementById('carousel-track');
-            const viewport = document.getElementById('carousel-viewport');
             slidesPerView = getSlidesPerView();
             const maxIndex = Math.max(0, ALL_VIDEOS.length - slidesPerView);
-            carouselIndex = Math.min(Math.max(idx, 0), maxIndex);
 
-            // Calculate slide width dynamically
+            // 循環邏輯
+            if (idx < 0) {
+                carouselIndex = maxIndex;  // 第一頁往左 → 去最後
+            } else if (idx > maxIndex) {
+                carouselIndex = 0;         // 最後頁往右 → 回第一
+            } else {
+                carouselIndex = idx;
+            }
+
             const slide = track.querySelector('.carousel-slide');
             if (!slide) return;
-            const slideWidth = slide.offsetWidth + 21; // gap
+            const slideWidth = slide.offsetWidth + 21;
             track.style.transform = `translateX(-${carouselIndex * slideWidth}px)`;
             renderDots();
         }
