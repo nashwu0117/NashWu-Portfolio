@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ── Security Headers ── -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' 'unsafe-inline' https://unpkg.com;
@@ -17,6 +16,10 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+
+    <meta name="description" content="Nash Wu — 旅遊 VLOG、海外生活、AI 創作。帶你看不一樣的世界。">
+    <meta property="og:title" content="Nash Wu — Creator & YouTuber">
+    <meta property="og:description" content="旅遊 VLOG、海外生活、AI 創作。帶你看不一樣的世界。">
 
     <title>Nash Wu — Creator & YouTuber</title>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -32,6 +35,7 @@
             --accent: #c9a96e;
             --accent2: #e8c88a;
             --white: #f5f0e8;
+            --red: #e05252;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -78,18 +82,24 @@
         .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent); }
         .hero-deco { position: absolute; right: -60px; top: 50%; transform: translateY(-50%); font-family: 'Playfair Display', serif; font-size: 22vw; font-weight: 900; color: rgba(201,169,110,0.03); line-height: 1; pointer-events: none; user-select: none; }
         .hero-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; width: 100%; }
+
+        /* Live pill */
         .hero-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(201,169,110,0.3); padding: 6px 14px; border-radius: 100px; margin-bottom: 32px; }
-        .hero-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: blink 2s infinite; }
+        .hero-label-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: blink 2s infinite; flex-shrink: 0; }
         @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+
         .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(4rem, 10vw, 9rem); font-weight: 900; line-height: 0.92; color: var(--white); margin-bottom: 8px; }
         .hero-title em { font-style: italic; color: var(--accent); }
-        .hero-subtitle { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 2.5vw, 2rem); font-weight: 700; font-style: italic; color: var(--muted); margin-bottom: 28px; padding-left: 4px; }
-        .hero-desc { font-size: 0.95rem; color: var(--muted); max-width: 460px; line-height: 1.9; margin-bottom: 44px; }
+        .hero-subtitle { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 2.5vw, 1.8rem); font-weight: 700; font-style: italic; color: var(--muted); margin-bottom: 28px; padding-left: 4px; }
+        .hero-desc { font-size: 0.95rem; color: var(--muted); max-width: 480px; line-height: 1.9; margin-bottom: 44px; }
+        .hero-desc strong { color: var(--text); font-weight: 500; }
+
         .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
         .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: var(--bg); padding: 14px 30px; border-radius: 100px; font-weight: 700; font-size: 0.88rem; text-decoration: none; transition: all 0.3s; }
         .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,169,110,0.25); }
         .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--text); padding: 14px 30px; border-radius: 100px; font-weight: 500; font-size: 0.88rem; text-decoration: none; border: 1px solid var(--border); transition: all 0.3s; }
         .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
         .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--muted); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; animation: float 2.5s ease-in-out infinite; }
         @keyframes float { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
 
@@ -100,6 +110,7 @@
         .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--accent); }
         .stat-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
         .stats-div { width: 1px; height: 40px; background: var(--border); }
+        @media (max-width: 600px) { .stats-div { display: none; } .stats-inner { gap: 28px; } }
 
         /* ABOUT */
         #about { padding: 120px 0; }
@@ -110,9 +121,21 @@
         .about-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.1; color: var(--white); margin-bottom: 24px; }
         .about-title em { font-style: italic; color: var(--accent); }
         .about-text { color: var(--muted); line-height: 1.9; font-size: 0.92rem; margin-bottom: 14px; }
-        .about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+        .about-text strong { color: var(--text); }
+
+        /* Content pillars */
+        .about-pillars { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; }
+        .pillar { display: flex; align-items: flex-start; gap: 14px; padding: 14px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; transition: border-color 0.3s; }
+        .pillar:hover { border-color: rgba(201,169,110,0.25); }
+        .pillar-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+        .pillar-text { display: flex; flex-direction: column; gap: 3px; }
+        .pillar-title { font-size: 0.82rem; font-weight: 700; color: var(--white); }
+        .pillar-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
+
+        .about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
         .tag { padding: 6px 16px; border: 1px solid var(--border); border-radius: 100px; font-size: 0.76rem; color: var(--muted); transition: all 0.3s; cursor: default; }
         .tag:hover { border-color: var(--accent); color: var(--accent); }
+
         .about-img-wrap { position: relative; }
         .about-img-deco1 { position: absolute; top: -20px; right: -20px; width: 90px; height: 90px; border-radius: 50%; border: 1px solid rgba(201,169,110,0.3); }
         .about-img-deco2 { position: absolute; bottom: -28px; left: -28px; width: 130px; height: 130px; border: 1px solid rgba(201,169,110,0.12); }
@@ -124,12 +147,19 @@
         .badge-name { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--white); font-weight: 700; }
         .badge-role { font-size: 0.7rem; color: var(--accent); margin-top: 3px; }
 
+        /* Currently badge */
+        .about-location { position: absolute; top: 20px; right: -10px; z-index: 2; background: rgba(14,12,10,0.88); backdrop-filter: blur(12px); border: 1px solid rgba(201,169,110,0.25); border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; }
+        .about-location-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; flex-shrink: 0; box-shadow: 0 0 6px rgba(74,222,128,0.6); animation: blink 2s infinite; }
+        .about-location-text { font-size: 0.7rem; color: var(--muted); }
+        .about-location-text strong { display: block; font-size: 0.78rem; color: var(--white); font-weight: 600; }
+
         /* PORTFOLIO */
         #portfolio { padding: 120px 0; }
         .portfolio-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; }
         .portfolio-header { margin-bottom: 52px; }
         .portfolio-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 700; color: var(--white); line-height: 1.1; }
         .portfolio-title em { font-style: italic; color: var(--accent); }
+        .portfolio-subtitle { color: var(--muted); font-size: 0.88rem; margin-top: 12px; max-width: 480px; line-height: 1.7; }
 
         /* Carousel */
         .carousel-wrap { position: relative; }
@@ -178,16 +208,29 @@
         .loader-ring { width: 36px; height: 36px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
 
+        /* SUB CTA strip */
+        .sub-strip { background: linear-gradient(135deg, rgba(201,169,110,0.08) 0%, rgba(201,169,110,0.03) 100%); border-top: 1px solid rgba(201,169,110,0.12); border-bottom: 1px solid rgba(201,169,110,0.12); padding: 52px 0; }
+        .sub-strip-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 28px; }
+        .sub-strip-copy h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 700; color: var(--white); margin-bottom: 6px; }
+        .sub-strip-copy h3 em { font-style: italic; color: var(--accent); }
+        .sub-strip-copy p { font-size: 0.86rem; color: var(--muted); }
+        .sub-strip-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
         /* CONTACT */
         #contact { padding: 120px 0; }
         .contact-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
         @media (max-width: 900px) { .contact-inner { grid-template-columns: 1fr; gap: 48px; } }
         .contact-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 18px; }
         .contact-title em { font-style: italic; color: var(--accent); }
-        .contact-desc { color: var(--muted); line-height: 1.85; font-size: 0.9rem; margin-bottom: 36px; }
+        .contact-desc { color: var(--muted); line-height: 1.85; font-size: 0.9rem; margin-bottom: 12px; }
+        .contact-collab { background: var(--card); border: 1px solid rgba(201,169,110,0.18); border-radius: 10px; padding: 16px 20px; margin-bottom: 28px; }
+        .contact-collab p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+        .contact-collab strong { color: var(--accent); }
+        .social-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
         .social-grid { display: flex; flex-wrap: wrap; gap: 10px; }
         .social-btn { display: flex; align-items: center; gap: 8px; padding: 9px 18px; border: 1px solid var(--border); border-radius: 100px; color: var(--muted); text-decoration: none; font-size: 0.76rem; font-weight: 500; transition: all 0.3s; }
         .social-btn:hover { border-color: var(--accent); color: var(--accent); }
+
         .contact-form { display: flex; flex-direction: column; gap: 18px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
         @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
@@ -200,7 +243,6 @@
         .form-submit:hover { background: var(--accent2); transform: translateY(-2px); }
         .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-        /* Honeypot */
         .hp-field { display: none !important; }
 
         /* FOOTER */
@@ -238,8 +280,8 @@
         </a>
         <div class="nav-links">
             <a href="#about">About</a>
-            <a href="#portfolio">Work</a>
-            <a href="#contact" class="nav-cta">Contact</a>
+            <a href="#portfolio">影片</a>
+            <a href="#contact" class="nav-cta">聯絡我</a>
         </div>
         <button class="nav-mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
             <i data-lucide="menu" style="width:24px;height:24px"></i>
@@ -247,8 +289,8 @@
     </div>
     <div class="mobile-menu" id="mobile-menu">
         <a href="#about">About</a>
-        <a href="#portfolio">Work</a>
-        <a href="#contact">Contact</a>
+        <a href="#portfolio">影片</a>
+        <a href="#contact">聯絡我</a>
     </div>
 </nav>
 
@@ -258,17 +300,24 @@
     <div class="hero-grid"></div>
     <div class="hero-deco" aria-hidden="true">NW</div>
     <div class="hero-inner">
-        <div class="hero-label">YouTuber · Creator · Traveller</div>
+        <div class="hero-label">
+            <span class="hero-label-dot"></span>
+            旅遊 · 生活 · AI 創作
+        </div>
         <h1 class="hero-title">Nash<br><em>Wu</em></h1>
-        <p class="hero-subtitle">Explore My Channel</p>
-        <p class="hero-desc">分享生活點滴、深度旅遊體驗與最新科技產品的頻道。帶你看見世界不同的角落。</p>
+        <p class="hero-subtitle">帶你看不一樣的世界</p>
+        <p class="hero-desc">
+            鏡頭記錄真實旅途，文字寫下異鄉生活。<br>
+            從<strong>台灣</strong>到世界各地——<strong>旅遊 VLOG、海外日常、AI 成長</strong>，<br>
+            訂閱，跟著我一起出發。
+        </p>
         <div class="hero-btns">
             <a href="https://www.youtube.com/@Nash_Wu_17" target="_blank" rel="noopener noreferrer" class="btn-primary">
                 <i data-lucide="play-circle" style="width:18px;height:18px"></i>
-                Watch on YouTube
+                訂閱頻道
             </a>
             <a href="#portfolio" class="btn-secondary">
-                My Work
+                看我的作品
                 <i data-lucide="arrow-down" style="width:16px;height:16px"></i>
             </a>
         </div>
@@ -284,22 +333,22 @@
     <div class="stats-inner">
         <div class="stat-item">
             <span class="stat-num" id="stat-videos">—</span>
-            <span class="stat-label">Videos</span>
+            <span class="stat-label">支影片</span>
         </div>
         <div class="stats-div"></div>
         <div class="stat-item">
             <span class="stat-num">🇹🇼🇰🇷🇹🇭🇻🇳🇪🇸🇸🇬🇳🇿</span>
-            <span class="stat-label">Countries</span>
+            <span class="stat-label">去過的地方</span>
         </div>
         <div class="stats-div"></div>
         <div class="stat-item">
-            <span class="stat-num">2024</span>
-            <span class="stat-label">Est.</span>
+            <span class="stat-num">2025</span>
+            <span class="stat-label">頻道創立</span>
         </div>
         <div class="stats-div"></div>
         <div class="stat-item">
-            <span class="stat-num">旅遊 · 生活 · 旅遊</span>
-            <span class="stat-label">Content</span>
+            <span class="stat-num">旅遊 · 生活 · AI</span>
+            <span class="stat-label">創作主題</span>
         </div>
     </div>
 </div>
@@ -309,27 +358,59 @@
     <div class="about-inner">
         <div class="fade-up">
             <div class="section-tag">Who Am I</div>
-            <h2 class="about-title">Hello!<br>I am <em>Nash!</em></h2>
-            <p class="about-text">🌍 生活 | 創作者 | 旅遊 | YouTuber 🎥</p>
-            <p class="about-text">這是一個分享生活點滴、深度旅遊體驗與最新科技產品的頻道。</p>
-            <p class="about-text">🌍 旅遊 VLOG：帶您探索國內外旅遊的秘境、最新的旅遊攻略，不論是自由行還是背包客的經驗，都讓您一手掌握！</p>
-            <p class="about-text">🏠 生活記錄：分享我的日常生活和各種生活風格的點滴。</p>
+            <h2 class="about-title">嗨，<br>我是 <em>Nash！</em></h2>
+
+            <p class="about-text">一個喜歡用鏡頭記錄世界的旅遊創作者。現居紐西蘭，也曾在韓國、泰國、越南、西班牙、新加坡留下足跡。</p>
+            <p class="about-text">頻道沒有濾鏡，只有<strong>真實的旅途、真實的生活</strong>。</p>
+
+            <div class="about-pillars">
+                <div class="pillar">
+                    <span class="pillar-icon">🌍</span>
+                    <div class="pillar-text">
+                        <div class="pillar-title">旅遊 VLOG</div>
+                        <div class="pillar-desc">帶你去我去過的地方，看我看過的風景。不管是自由行還是背包客，攻略都在這裡。</div>
+                    </div>
+                </div>
+                <div class="pillar">
+                    <span class="pillar-icon">📱</span>
+                    <div class="pillar-text">
+                        <div class="pillar-title">海外生活記錄</div>
+                        <div class="pillar-desc">在異鄉生活的真實樣子——不美化、不包裝，就是日常。</div>
+                    </div>
+                </div>
+                <div class="pillar">
+                    <span class="pillar-icon">🤖</span>
+                    <div class="pillar-text">
+                        <div class="pillar-title">AI 成長</div>
+                        <div class="pillar-desc">用科技讓創作和生活變得更好。Vibe Coding、AI 工具實測，一起進化。</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="about-tags">
                 <span class="tag">Travel Vlog</span>
-                <span class="tag">Tech Review</span>
-                <span class="tag">Daily Life</span>
-                <span class="tag">New Zealand 🇳🇿</span>
+                <span class="tag">海外生活</span>
+                <span class="tag">AI 工具</span>
+                <span class="tag">紐西蘭 🇳🇿</span>
                 <span class="tag">Vibe Coding</span>
             </div>
         </div>
+
         <div class="about-img-wrap fade-up">
             <div class="about-img-deco1" aria-hidden="true"></div>
             <div class="about-img-deco2" aria-hidden="true"></div>
+            <div class="about-location">
+                <span class="about-location-dot"></span>
+                <span class="about-location-text">
+                    <strong>Currently in</strong>
+                    New Zealand 🇳🇿
+                </span>
+            </div>
             <div class="about-img-frame">
                 <img src="pic_pack/NashWu.png" alt="Nash Wu profile photo">
                 <div class="about-badge">
                     <div class="badge-name">Nash Wu</div>
-                    <div class="badge-role">Creator · YouTuber</div>
+                    <div class="badge-role">旅遊創作者 · YouTuber</div>
                 </div>
             </div>
         </div>
@@ -341,7 +422,8 @@
     <div class="portfolio-inner">
         <div class="portfolio-header fade-up">
             <div class="section-tag">My Work</div>
-            <h2 class="portfolio-title">Latest <em>Videos</em></h2>
+            <h2 class="portfolio-title">最新<em>影片</em></h2>
+            <p class="portfolio-subtitle">新影片固定更新，開啟小鈴鐺不錯過 🔔</p>
         </div>
 
         <div class="loader" id="loading-state"><div class="loader-ring"></div></div>
@@ -351,17 +433,17 @@
                 <div class="carousel-viewport">
                     <div class="carousel-track" id="carousel-track"></div>
                 </div>
-                <button class="carousel-btn prev" onclick="carouselMove(-1)" aria-label="Previous">
+                <button class="carousel-btn prev" onclick="carouselMove(-1)" aria-label="上一支">
                     <i data-lucide="chevron-left" style="width:18px;height:18px"></i>
                 </button>
-                <button class="carousel-btn next" onclick="carouselMove(1)" aria-label="Next">
+                <button class="carousel-btn next" onclick="carouselMove(1)" aria-label="下一支">
                     <i data-lucide="chevron-right" style="width:18px;height:18px"></i>
                 </button>
             </div>
             <div class="carousel-dots" id="carousel-dots" role="tablist"></div>
             <div style="text-align:center;margin-top:40px">
                 <button class="lib-toggle" id="lib-toggle-btn" onclick="toggleLibrary()">
-                    <span id="lib-btn-text">View Full Library</span>
+                    <span id="lib-btn-text">看全部影片</span>
                     <i data-lucide="chevron-down" style="width:16px;height:16px" id="lib-chevron"></i>
                 </button>
                 <div class="video-count" id="video-count-preview"></div>
@@ -369,20 +451,47 @@
         </div>
 
         <div id="full-library">
-            <div class="lib-divider"><span>All Videos</span></div>
+            <div class="lib-divider"><span>全部影片</span></div>
             <div id="videos-grid"></div>
             <div class="video-count" id="video-count"></div>
         </div>
     </div>
 </section>
 
+<!-- Subscribe CTA Strip -->
+<div class="sub-strip">
+    <div class="sub-strip-inner">
+        <div class="sub-strip-copy">
+            <h3>喜歡我的內容？<br><em>訂閱頻道，一起出發</em></h3>
+            <p>新影片固定更新 · 開啟小鈴鐺不錯過任何旅途</p>
+        </div>
+        <div class="sub-strip-btns">
+            <a href="https://www.youtube.com/@Nash_Wu_17" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                <i data-lucide="youtube" style="width:17px;height:17px"></i>
+                立即訂閱
+            </a>
+            <a href="#contact" class="btn-secondary">
+                合作洽詢
+            </a>
+        </div>
+    </div>
+</div>
+
 <!-- Contact -->
 <section id="contact">
     <div class="contact-inner">
         <div class="fade-up">
             <div class="section-tag">Get in Touch</div>
-            <h2 class="contact-title">Let's<br><em>Connect</em></h2>
-            <p class="contact-desc">Have questions or just want to say hello? Drop a message! Also feel free to find me on social media.</p>
+            <h2 class="contact-title">有話想說？<br><em>來聊聊</em></h2>
+            <p class="contact-desc">不管是旅遊問題、合作邀請，還是單純想打個招呼——都歡迎。</p>
+
+            <div class="contact-collab">
+                <p>✉️ <strong>合作邀約請寄：</strong><br>
+                nashwu0990117@gmail.com<br>
+                <span style="font-size:0.74rem;margin-top:4px;display:block">旅遊品牌、科技產品、創意合作都開放討論 👋</span></p>
+            </div>
+
+            <div class="social-label">Follow me</div>
             <div class="social-grid">
                 <a href="https://instagram.com/nash_wu_17" target="_blank" rel="noopener noreferrer" class="social-btn">
                     <i data-lucide="instagram" style="width:16px;height:16px"></i> Instagram
@@ -404,16 +513,16 @@
                 </a>
             </div>
         </div>
+
         <div class="fade-up">
             <form class="contact-form" id="contact-form" novalidate>
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
-                <!-- Honeypot：機器人才會填這個欄位 -->
                 <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off">
                 <div class="form-row">
                     <div class="form-group">
-                        <label class="form-label" for="field-name">Name</label>
-                        <input type="text" id="field-name" name="name" required maxlength="100" placeholder="Your Name" class="form-input" autocomplete="name">
+                        <label class="form-label" for="field-name">姓名</label>
+                        <input type="text" id="field-name" name="name" required maxlength="100" placeholder="你的名字" class="form-input" autocomplete="name">
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="field-email">Email</label>
@@ -421,15 +530,15 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="field-subject">Subject</label>
-                    <input type="text" id="field-subject" name="subject" required maxlength="200" placeholder="Collaboration, Feedback..." class="form-input">
+                    <label class="form-label" for="field-subject">主旨</label>
+                    <input type="text" id="field-subject" name="subject" required maxlength="200" placeholder="合作邀請、問題、或只是打個招呼..." class="form-input">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="field-message">Message</label>
-                    <textarea id="field-message" name="message" required rows="5" maxlength="2000" placeholder="Type your message here..." class="form-textarea"></textarea>
+                    <label class="form-label" for="field-message">訊息內容</label>
+                    <textarea id="field-message" name="message" required rows="5" maxlength="2000" placeholder="想說的都可以說..." class="form-textarea"></textarea>
                 </div>
                 <button type="submit" class="form-submit">
-                    <span>Send Message</span>
+                    <span>送出訊息</span>
                     <i data-lucide="send" style="width:16px;height:16px"></i>
                 </button>
             </form>
@@ -441,9 +550,9 @@
 <footer>
     <div class="footer-inner">
         <div class="footer-brand">Nash<em>Wu</em></div>
-        <span class="footer-copy">© <span id="year"></span> Nash Wu. All rights reserved.</span>
+        <span class="footer-copy">© <span id="year"></span> Nash Wu · 用鏡頭記錄世界</span>
         <button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-            Back to top <i data-lucide="arrow-up" style="width:13px;height:13px"></i>
+            回到頂部 <i data-lucide="arrow-up" style="width:13px;height:13px"></i>
         </button>
     </div>
 </footer>
@@ -463,13 +572,12 @@
     const CONTACT_EMAIL = "nashwu0990117@gmail.com";
     const VIDEO_SOURCE_URL = "videos.json";
     const FALLBACK_VIDEOS = [
-        { id: '1', title: 'Tokyo Trip: SHIBUYA SKY', thumbnail: 'https://picsum.photos/seed/tokyo/800/450', desc: 'The new landmark of Tokyo, 360 degree view!' },
-        { id: '2', title: 'iPhone 15 Pro Max Review', thumbnail: 'https://picsum.photos/seed/iphone/800/450', desc: 'Is Titanium really lighter? 1 Month usage review.' },
-        { id: '3', title: 'Top 5 Ramen in Taipei', thumbnail: 'https://picsum.photos/seed/ramen/800/450', desc: 'Worth the 2 hour wait? Locals recommend.' },
+        { id: '1', title: 'Tokyo Trip: SHIBUYA SKY', thumbnail: 'https://picsum.photos/seed/tokyo/800/450', desc: '東京新地標，360 度無死角！' },
+        { id: '2', title: 'iPhone 15 Pro Max 開箱', thumbnail: 'https://picsum.photos/seed/iphone/800/450', desc: '鈦合金真的比較輕？用了一個月告訴你。' },
+        { id: '3', title: '台北 Top 5 拉麵推薦', thumbnail: 'https://picsum.photos/seed/ramen/800/450', desc: '排兩小時值得嗎？在地人推薦清單。' },
     ];
     let ALL_VIDEOS = [], carouselIndex = 0, slidesPerView = 3, libraryOpen = false;
 
-    // ── 安全：sanitize 文字，防止 XSS ──
     function sanitize(str) {
         const d = document.createElement('div');
         d.textContent = String(str || '');
@@ -479,21 +587,17 @@
     lucide.createIcons();
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Navbar scroll
     window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50));
 
-    // Mobile menu
     document.getElementById('mobile-menu-btn').addEventListener('click', () => {
         const m = document.getElementById('mobile-menu');
         m.style.display = m.style.display === 'block' ? 'none' : 'block';
     });
     document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobile-menu').style.display = 'none'));
 
-    // Scroll animations
     const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-    // Data
     async function getVideos() {
         try {
             const r = await fetch(`${VIDEO_SOURCE_URL}?t=${Date.now()}`);
@@ -503,7 +607,6 @@
         } catch { return FALLBACK_VIDEOS.map(v => ({ ...v, url: `https://www.youtube.com/watch?v=${v.id}` })); }
     }
 
-    // ── 安全：video ID 白名單驗證 ──
     function isValidVideoId(id) {
         return typeof id === 'string' && /^[a-zA-Z0-9_-]{6,20}$/.test(id);
     }
@@ -525,7 +628,6 @@
         </div>`;
     }
 
-    // Carousel
     function getSPV() { return window.innerWidth < 769 ? 1 : window.innerWidth < 1025 ? 2 : 3; }
 
     function renderDots() {
@@ -535,7 +637,7 @@
         for (let i = 0; i <= max; i++) {
             const d = document.createElement('button');
             d.className = 'dot' + (i === carouselIndex ? ' active' : '');
-            d.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            d.setAttribute('aria-label', `第 ${i + 1} 頁`);
             d.onclick = () => goToSlide(i);
             el.appendChild(d);
         }
@@ -555,16 +657,14 @@
     function carouselMove(dir) { goToSlide(carouselIndex + dir); }
     window.addEventListener('resize', () => { slidesPerView = getSPV(); goToSlide(carouselIndex); });
 
-    // Toggle library
     function toggleLibrary() {
         libraryOpen = !libraryOpen;
         document.getElementById('full-library').classList.toggle('open', libraryOpen);
         document.getElementById('lib-chevron').classList.toggle('open', libraryOpen);
-        document.getElementById('lib-btn-text').textContent = libraryOpen ? 'Hide Library' : 'View Full Library';
+        document.getElementById('lib-btn-text').textContent = libraryOpen ? '收起影片庫' : '看全部影片';
         if (libraryOpen) setTimeout(() => document.getElementById('full-library').scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
     }
 
-    // Init
     async function init() {
         ALL_VIDEOS = await getVideos();
         document.getElementById('loading-state').style.display = 'none';
@@ -579,7 +679,6 @@
         renderDots();
     }
 
-    // ── 安全：Modal 只允許合法 video ID ──
     function playVideo(id) {
         if (!isValidVideoId(id)) return;
         document.getElementById('youtube-player').src = `https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
@@ -593,17 +692,14 @@
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
 
-    // ── 安全：聯絡表單 + Honeypot 驗證 ──
     document.getElementById('contact-form').addEventListener('submit', async e => {
         e.preventDefault();
-
-        // Honeypot 檢查：有填就是機器人，直接丟棄
         const honey = e.target.querySelector('input[name="_honey"]');
         if (honey && honey.value.trim() !== '') return;
 
         const btn = e.target.querySelector('button[type="submit"]');
         const span = btn.querySelector('span');
-        span.textContent = 'Sending...';
+        span.textContent = '傳送中...';
         btn.disabled = true;
 
         try {
@@ -612,10 +708,10 @@
                 body: new FormData(e.target),
                 headers: { 'Accept': 'application/json' }
             });
-            if (r.ok) { span.textContent = 'Sent! ✓'; e.target.reset(); }
+            if (r.ok) { span.textContent = '已送出 ✓'; e.target.reset(); }
             else throw new Error();
-        } catch { span.textContent = 'Error, try again.'; }
-        setTimeout(() => { span.textContent = 'Send Message'; btn.disabled = false; }, 3000);
+        } catch { span.textContent = '傳送失敗，請再試一次。'; }
+        setTimeout(() => { span.textContent = '送出訊息'; btn.disabled = false; }, 3000);
     });
 
     init();
