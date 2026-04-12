@@ -22,691 +22,810 @@
     <meta property="og:description" content="旅遊 VLOG、海外生活、AI 創作。帶你看不一樣的世界。">
 
     <title>Nash Wu — Creator & YouTuber</title>
-    <!-- icons: inline SVG only -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg: #0e0c0a;
-            --surface: #161310;
-            --card: #1c1814;
-            --border: rgba(255,255,255,0.07);
-            --text: #f0e6d3;
-            --muted: #8a7d6e;
-            --accent: #c9a96e;
-            --accent2: #e8c88a;
-            --white: #f5f0e8;
-            --red: #e05252;
+            --bg: #0a0a0a;
+            --surface: #121212;
+            --primary: #ffffff;
+            --secondary: #a1a1aa;
+            --accent: #3b82f6;
+            --text: #f4f4f5;
+            --border: #27272a;
+            --card-bg: #18181b;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
         body {
             background: var(--bg);
             color: var(--text);
-            font-family: 'DM Sans', 'Noto Sans TC', sans-serif;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
         }
-        body::before {
-            content: '';
-            position: fixed; inset: 0;
-            z-index: 9999; pointer-events: none;
-            opacity: 0.025;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            background-size: 200px 200px;
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-        /* NAV */
-        nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 20px 0; transition: all 0.4s; }
-        nav.scrolled { background: rgba(14,12,10,0.92); backdrop-filter: blur(16px); padding: 14px 0; border-bottom: 1px solid var(--border); }
-        .nav-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
-        .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .nav-logo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent); }
-        .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); }
-        .nav-logo-text em { font-style: normal; color: var(--accent); }
-        .nav-links { display: flex; align-items: center; gap: 40px; }
-        .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--white); }
-        .nav-cta { background: var(--accent) !important; color: var(--bg) !important; padding: 9px 22px !important; border-radius: 100px !important; font-weight: 700 !important; }
-        .nav-cta:hover { background: var(--accent2) !important; color: var(--bg) !important; }
-        .nav-mobile-btn { display: none; background: none; border: none; color: var(--text); cursor: pointer; }
-        .mobile-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 32px 24px; }
-        .mobile-menu a { display: block; color: var(--text); text-decoration: none; padding: 12px 0; font-weight: 500; border-bottom: 1px solid var(--border); }
-        @media (max-width: 768px) { .nav-links { display: none; } .nav-mobile-btn { display: block; } }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-        /* HERO */
-        #hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 80px; }
-        .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(201,169,110,0.08) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 20% 80%, rgba(201,169,110,0.04) 0%, transparent 60%); }
-        .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent); }
-        .hero-deco { position: absolute; right: -60px; top: 50%; transform: translateY(-50%); font-family: 'Playfair Display', serif; font-size: 22vw; font-weight: 900; color: rgba(201,169,110,0.03); line-height: 1; pointer-events: none; user-select: none; }
-        .hero-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; width: 100%; }
+        /* --- Components --- */
+        
+        /* Navbar */
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-bottom: 1px solid transparent;
+        }
 
-        /* Live pill */
-        .hero-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(201,169,110,0.3); padding: 6px 14px; border-radius: 100px; margin-bottom: 32px; }
-        .hero-label-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: blink 2s infinite; flex-shrink: 0; }
-        @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+        #navbar.scrolled {
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom-color: var(--border);
+            padding: 12px 0;
+        }
 
-        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(4rem, 10vw, 9rem); font-weight: 900; line-height: 0.92; color: var(--white); margin-bottom: 8px; }
-        .hero-title em { font-style: italic; color: var(--accent); }
-        .hero-subtitle { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 2.5vw, 1.8rem); font-weight: 700; font-style: italic; color: var(--muted); margin-bottom: 28px; padding-left: 4px; }
-        .hero-desc { font-size: 0.95rem; color: var(--muted); max-width: 480px; line-height: 1.9; margin-bottom: 44px; }
-        .hero-desc strong { color: var(--text); font-weight: 500; }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
 
-        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-        .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: var(--bg); padding: 14px 30px; border-radius: 100px; font-weight: 700; font-size: 0.88rem; text-decoration: none; transition: all 0.3s; }
-        .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,169,110,0.25); }
-        .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--text); padding: 14px 30px; border-radius: 100px; font-weight: 500; font-size: 0.88rem; text-decoration: none; border: 1px solid var(--border); transition: all 0.3s; }
-        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+        .logo {
+            font-size: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
 
-        .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--muted); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; animation: float 2.5s ease-in-out infinite; }
-        @keyframes float { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
 
-        /* STATS */
-        .stats-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); padding: 28px 0; }
-        .stats-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; display: flex; gap: 48px; flex-wrap: wrap; align-items: center; }
-        .stat-item { display: flex; flex-direction: column; gap: 4px; }
-        .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--accent); }
-        .stat-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-        .stats-div { width: 1px; height: 40px; background: var(--border); }
-        @media (max-width: 600px) { .stats-div { display: none; } .stats-inner { gap: 28px; } }
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-        /* ABOUT */
-        #about { padding: 120px 0; }
-        .about-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        @media (max-width: 900px) { .about-inner { grid-template-columns: 1fr; gap: 48px; } }
-        .section-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
-        .section-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--accent); }
-        .about-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.1; color: var(--white); margin-bottom: 24px; }
-        .about-title em { font-style: italic; color: var(--accent); }
-        .about-text { color: var(--muted); line-height: 1.9; font-size: 0.92rem; margin-bottom: 14px; }
-        .about-text strong { color: var(--text); }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
 
-        /* Content pillars */
-        .about-pillars { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; }
-        .pillar { display: flex; align-items: flex-start; gap: 14px; padding: 14px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; transition: border-color 0.3s; }
-        .pillar:hover { border-color: rgba(201,169,110,0.25); }
-        .pillar-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
-        .pillar-text { display: flex; flex-direction: column; gap: 3px; }
-        .pillar-title { font-size: 0.82rem; font-weight: 700; color: var(--white); }
-        .pillar-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+        }
 
-        .about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-        .tag { padding: 6px 16px; border: 1px solid var(--border); border-radius: 100px; font-size: 0.76rem; color: var(--muted); transition: all 0.3s; cursor: default; }
-        .tag:hover { border-color: var(--accent); color: var(--accent); }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
 
-        .about-img-wrap { position: relative; }
-        .about-img-deco1 { position: absolute; top: -20px; right: -20px; width: 90px; height: 90px; border-radius: 50%; border: 1px solid rgba(201,169,110,0.3); }
-        .about-img-deco2 { position: absolute; bottom: -28px; left: -28px; width: 130px; height: 130px; border: 1px solid rgba(201,169,110,0.12); }
-        .about-img-frame { position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 4/5; max-width: 420px; margin: 0 auto; }
-        .about-img-frame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%); transition: filter 0.6s; }
-        .about-img-frame:hover img { filter: grayscale(0%); }
-        .about-img-frame::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,12,10,0.65) 0%, transparent 55%); }
-        .about-badge { position: absolute; bottom: 24px; left: 24px; z-index: 2; background: rgba(14,12,10,0.82); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 12px; padding: 12px 18px; }
-        .badge-name { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--white); font-weight: 700; }
-        .badge-role { font-size: 0.7rem; color: var(--accent); margin-top: 3px; }
+        .hero-text h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            line-height: 1.05;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
 
-        /* Currently badge */
-        .about-location { position: absolute; top: 20px; right: -10px; z-index: 2; background: rgba(14,12,10,0.88); backdrop-filter: blur(12px); border: 1px solid rgba(201,169,110,0.25); border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; }
-        .about-location-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; flex-shrink: 0; box-shadow: 0 0 6px rgba(74,222,128,0.6); animation: blink 2s infinite; }
-        .about-location-text { font-size: 0.7rem; color: var(--muted); }
-        .about-location-text strong { display: block; font-size: 0.78rem; color: var(--white); font-weight: 600; }
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
 
-        /* PORTFOLIO */
-        #portfolio { padding: 120px 0; }
-        .portfolio-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; }
-        .portfolio-header { margin-bottom: 52px; }
-        .portfolio-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 700; color: var(--white); line-height: 1.1; }
-        .portfolio-title em { font-style: italic; color: var(--accent); }
-        .portfolio-subtitle { color: var(--muted); font-size: 0.88rem; margin-top: 12px; max-width: 480px; line-height: 1.7; }
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 32px;
+            border-radius: 100px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat-item .number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-item .label {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Video Section */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 48px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+        }
+
+        .section-info {
+            text-align: right;
+        }
+
+        .section-info p {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
 
         /* Carousel */
-        .carousel-wrap { position: relative; }
-        .carousel-viewport { overflow: hidden; }
-        .carousel-track { display: flex; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
-        .carousel-slide { flex: 0 0 calc(33.333% - 14px); margin-right: 21px; }
-        @media (max-width: 768px) { .carousel-slide { flex: 0 0 100%; margin-right: 16px; } }
-        @media (min-width: 769px) and (max-width: 1024px) { .carousel-slide { flex: 0 0 calc(50% - 10px); margin-right: 20px; } }
-        .carousel-btn { position: absolute; top: 42%; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; border-radius: 50%; background: var(--card); border: 1px solid var(--border); color: var(--text); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; }
-        .carousel-btn:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-        .carousel-btn.prev { left: -22px; }
-        .carousel-btn.next { right: -22px; }
-        .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 28px; }
-        .dot { height: 3px; width: 20px; border-radius: 100px; background: var(--border); border: none; cursor: pointer; transition: all 0.3s; }
-        .dot.active { background: var(--accent); width: 40px; }
+        .carousel-container {
+            position: relative;
+            margin: 0 -12px;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            gap: 24px;
+            padding: 0 12px;
+        }
+
+        .carousel-slide {
+            min-width: calc(33.333% - 16px);
+        }
 
         /* Video Card */
-        .video-card { background: var(--card); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); transition: all 0.35s; cursor: pointer; }
-        .video-card:hover { transform: translateY(-6px); border-color: rgba(201,169,110,0.22); box-shadow: 0 24px 48px rgba(0,0,0,0.5); }
-        .video-thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; }
-        .video-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .video-card:hover .video-thumb img { transform: scale(1.06); }
-        .video-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
-        .video-card:hover .video-overlay { opacity: 1; }
-        .play-btn { width: 52px; height: 52px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--bg); transform: scale(0.75); transition: transform 0.3s; }
-        .video-card:hover .play-btn { transform: scale(1); }
-        .video-info { padding: 18px; }
-        .video-title { font-weight: 700; font-size: 0.88rem; color: var(--white); line-height: 1.45; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .video-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            height: 100%;
+        }
 
-        /* Library */
-        .lib-toggle { display: inline-flex; align-items: center; gap: 8px; background: none; border: 1px solid var(--border); color: var(--text); padding: 12px 24px; border-radius: 100px; font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.3s; font-family: inherit; }
-        .lib-toggle:hover { border-color: var(--accent); color: var(--accent); }
-        .lib-chevron { transition: transform 0.35s; }
-        .lib-chevron.open { transform: rotate(180deg); }
-        #full-library { max-height: 0; overflow: hidden; transition: max-height 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.4s; opacity: 0; }
-        #full-library.open { max-height: 99999px; opacity: 1; }
-        .lib-divider { display: flex; align-items: center; gap: 20px; margin: 48px 0 36px; }
-        .lib-divider span { font-size: 0.63rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-        .lib-divider::before, .lib-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-        #videos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
-        @media (max-width: 1024px) { #videos-grid { grid-template-columns: repeat(2,1fr); } }
-        @media (max-width: 640px) { #videos-grid { grid-template-columns: 1fr; } }
-        .video-count { text-align: center; margin-top: 28px; font-size: 0.76rem; color: var(--muted); }
-        .loader { display: flex; justify-content: center; align-items: center; min-height: 260px; }
-        .loader-ring { width: 36px; height: 36px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        .video-card:hover {
+            border-color: #3f3f46;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
 
-        /* SUB CTA strip */
-        .sub-strip { background: linear-gradient(135deg, rgba(201,169,110,0.08) 0%, rgba(201,169,110,0.03) 100%); border-top: 1px solid rgba(201,169,110,0.12); border-bottom: 1px solid rgba(201,169,110,0.12); padding: 52px 0; }
-        .sub-strip-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 28px; }
-        .sub-strip-copy h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 700; color: var(--white); margin-bottom: 6px; }
-        .sub-strip-copy h3 em { font-style: italic; color: var(--accent); }
-        .sub-strip-copy p { font-size: 0.86rem; color: var(--muted); }
-        .sub-strip-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+        .video-thumb {
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            background: #27272a;
+        }
 
-        /* CONTACT */
-        #contact { padding: 120px 0; }
-        .contact-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-        @media (max-width: 900px) { .contact-inner { grid-template-columns: 1fr; gap: 48px; } }
-        .contact-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 18px; }
-        .contact-title em { font-style: italic; color: var(--accent); }
-        .contact-desc { color: var(--muted); line-height: 1.85; font-size: 0.9rem; margin-bottom: 12px; }
-        .contact-collab { background: var(--card); border: 1px solid rgba(201,169,110,0.18); border-radius: 10px; padding: 16px 20px; margin-bottom: 28px; }
-        .contact-collab p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
-        .contact-collab strong { color: var(--accent); }
-        .social-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-        .social-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-        .social-btn { display: flex; align-items: center; gap: 8px; padding: 9px 18px; border: 1px solid var(--border); border-radius: 100px; color: var(--muted); text-decoration: none; font-size: 0.76rem; font-weight: 500; transition: all 0.3s; }
-        .social-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .video-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-        .contact-form { display: flex; flex-direction: column; gap: 18px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-        @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
-        .form-group { display: flex; flex-direction: column; gap: 8px; }
-        .form-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-        .form-input, .form-textarea { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 13px 16px; color: var(--text); font-family: inherit; font-size: 0.88rem; transition: all 0.3s; outline: none; resize: none; }
-        .form-input::placeholder, .form-textarea::placeholder { color: rgba(138,125,110,0.45); }
-        .form-input:focus, .form-textarea:focus { border-color: var(--accent); background: rgba(201,169,110,0.03); }
-        .form-submit { background: var(--accent); color: var(--bg); border: none; padding: 15px 32px; border-radius: 100px; font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: inherit; }
-        .form-submit:hover { background: var(--accent2); transform: translateY(-2px); }
-        .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .video-card:hover .video-thumb img {
+            transform: scale(1.05);
+        }
 
-        .hp-field { display: none !important; }
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
-        /* FOOTER */
-        footer { border-top: 1px solid var(--border); padding: 44px 0; }
-        .footer-inner { max-width: 1300px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-        .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); }
-        .footer-brand em { font-style: normal; color: var(--accent); }
-        .footer-copy { font-size: 0.72rem; color: var(--muted); }
-        .back-top { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: none; border: none; cursor: pointer; transition: color 0.3s; font-family: inherit; }
-        .back-top:hover { color: var(--accent); }
+        .video-card:hover .video-overlay {
+            opacity: 1;
+        }
 
-        /* MODAL */
-        #video-modal { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.96); display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
-        #video-modal.open { opacity: 1; pointer-events: all; }
-        .modal-content { position: relative; width: 100%; max-width: 1100px; aspect-ratio: 16/9; border-radius: 8px; overflow: hidden; background: #000; }
-        .modal-close { position: absolute; top: 12px; right: 12px; z-index: 10; background: rgba(0,0,0,0.6); border: 1px solid var(--border); color: var(--text); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
-        .modal-close:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-        #youtube-player { width: 100%; height: 100%; border: none; }
-        .modal-bg { position: absolute; inset: 0; z-index: -1; }
+        .play-btn {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: var(--bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-        /* ANIMATIONS */
-        .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
-        .fade-up:nth-child(2) { transition-delay: 0.15s; }
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .video-desc {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .nav-dot-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Full Library */
+        #full-library {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #full-library.open {
+            max-height: 3000px;
+            padding-top: 60px;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 120px 0;
+            background: #0f0f0f;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-text h2 {
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+
+        .contact-text p {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            color: var(--secondary);
+        }
+
+        input, textarea {
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            color: var(--primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: #1f1f23;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.95);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            width: 100%;
+            max-width: 1000px;
+            aspect-ratio: 16 / 9;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -48px;
+            right: 0;
+            color: #fff;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            width: 100%;
+            background: var(--surface);
+            padding: 24px;
+            border-bottom: 1px solid var(--border);
+            z-index: 999;
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .carousel-slide {
+                min-width: calc(50% - 12px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-text h1 { font-size: 3.5rem; }
+            .carousel-slide { min-width: 100%; }
+            .contact { padding: 80px 0; }
+        }
     </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<nav id="navbar">
-    <div class="nav-inner">
-        <a href="#" class="nav-logo">
-            <img src="pic_pack/NashWu.png" alt="Nash Wu">
-            <span class="nav-logo-text">Nash<em>Wu</em></span>
-        </a>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#portfolio">影片</a>
-            <a href="#contact" class="nav-cta">聯絡我</a>
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo serif">Nash Wu</a>
+            <div class="nav-links">
+                <a href="#work">作品影片</a>
+                <a href="#about">關於我</a>
+                <a href="#contact">合作洽談</a>
+            </div>
+            <button id="mobile-menu-btn" style="background:none; border:none; color:#fff; cursor:pointer;" aria-label="選單">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
         </div>
-        <button class="nav-mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <div id="mobile-menu">
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <a href="#work" style="color: var(--primary); text-decoration: none; font-size: 1.1rem;">作品影片</a>
+                <a href="#about" style="color: var(--primary); text-decoration: none; font-size: 1.1rem;">關於我</a>
+                <a href="#contact" style="color: var(--primary); text-decoration: none; font-size: 1.1rem;">合作洽談</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-text fade-up">
+                        <h1 class="serif">Capturing Stories,<br>Creating Impact.</h1>
+                        <p>我是一位熱愛探索的創作者，專注於旅遊 VLOG、海外生活與 AI 應用。透過鏡頭，我將日常轉化為不凡的視覺體驗。</p>
+                        <div class="cta-group">
+                            <a href="#work" class="btn btn-primary">觀看作品集</a>
+                            <a href="#contact" class="btn btn-secondary">聯繫我</a>
+                        </div>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span class="number" id="stat-videos">...</span>
+                                <span class="label">影片製作</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="number">Dunedin</span>
+                                <span class="label">目前所在地</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="container" style="padding: 100px 0;">
+            <div id="loading-state" style="text-align: center; padding: 40px; color: var(--secondary);">
+                正在載入精選作品...
+            </div>
+            
+            <div id="carousel-section" style="display: none;">
+                <div class="section-header fade-up">
+                    <h2 class="serif">精選創作</h2>
+                    <div class="section-info">
+                        <p id="video-count-preview">載入中...</p>
+                        <div style="display: flex; gap: 12px; margin-top: 12px; justify-content: flex-end;">
+                            <button onclick="carouselMove(-1)" class="btn btn-secondary" style="padding: 10px; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                            </button>
+                            <button onclick="carouselMove(1)" class="btn btn-secondary" style="padding: 10px; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-container fade-up">
+                    <div id="carousel-track" class="carousel-track">
+                        </div>
+                </div>
+
+                <div class="carousel-nav fade-up">
+                    <div id="carousel-dots" class="nav-dot-container"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 60px;" class="fade-up">
+                    <button onclick="toggleLibrary()" class="btn btn-secondary">
+                        <span id="lib-btn-text">看全部影片</span>
+                        <svg id="lib-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px; transition: transform 0.3s ease;"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="full-library">
+                <div class="section-header">
+                    <h2 class="serif">完整影片庫</h2>
+                    <div class="section-info">
+                        <p id="video-count">...</p>
+                    </div>
+                </div>
+                <div id="videos-grid" class="videos-grid">
+                    </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-text fade-up">
+                        <h2 class="serif">開始一場<br>精彩的合作</h2>
+                        <p>無論是影音創作、品牌推廣或是純粹想打個招呼，隨時歡迎你的來信。</p>
+                        <div style="margin-top: 60px;">
+                            <label>電子郵件</label>
+                            <a href="mailto:nashwu0990117@gmail.com" style="font-size: 1.5rem; color: var(--primary); text-decoration: none; font-weight: 700;">nashwu0990117@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-form-container fade-up">
+                        <form id="contact-form">
+                            <input type="text" name="_honey" style="display:none">
+                            <input type="hidden" name="_subject" value="來自 NashWu-Portfolio 的新訊息">
+                            
+                            <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                <div class="form-group">
+                                    <label>你的名稱</label>
+                                    <input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>你的電子郵件</label>
+                                    <input type="email" name="email" placeholder="Email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>訊息內容</label>
+                                <textarea name="message" placeholder="告訴我想談些什麼..." rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 18px;">
+                                <span>傳送訊息</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="padding: 60px 0; border-top: 1px solid var(--border); text-align: center; color: var(--secondary); font-size: 0.9rem;">
+        <div class="container">
+            <p>&copy; <span id="year"></span> Nash Wu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="video-modal" class="modal" onclick="closeVideo()">
+        <button class="close-modal">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <span>關閉</span>
         </button>
-    </div>
-    <div class="mobile-menu" id="mobile-menu">
-        <a href="#about">About</a>
-        <a href="#portfolio">影片</a>
-        <a href="#contact">聯絡我</a>
-    </div>
-</nav>
-
-<!-- Hero -->
-<section id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-deco" aria-hidden="true">NW</div>
-    <div class="hero-inner">
-        <div class="hero-label">
-            <span class="hero-label-dot"></span>
-            旅遊 · 生活 · AI 創作
-        </div>
-        <h1 class="hero-title">Nash<br><em>Wu</em></h1>
-        <p class="hero-subtitle">帶你看不一樣的世界</p>
-        <p class="hero-desc">
-            鏡頭記錄真實旅途，文字寫下異鄉生活。<br>
-            從<strong>台灣</strong>到世界各地——<strong>旅遊 VLOG、海外日常、AI 成長</strong>，<br>
-            訂閱，跟著我一起出發。
-        </p>
-        <div class="hero-btns">
-            <a href="https://www.youtube.com/@Nash_Wu_17" target="_blank" rel="noopener noreferrer" class="btn-primary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                訂閱頻道
-            </a>
-            <a href="#portfolio" class="btn-secondary">
-                看我的作品
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
-            </a>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <iframe id="youtube-player" width="100%" height="100%" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
-    <div class="hero-scroll" aria-hidden="true">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="7"/><path d="M12 6v4"/></svg>
-        Scroll
-    </div>
-</section>
 
-<!-- Stats -->
-<div class="stats-bar">
-    <div class="stats-inner">
-        <div class="stat-item">
-            <span class="stat-num" id="stat-videos">—</span>
-            <span class="stat-label">支影片</span>
-        </div>
-        <div class="stats-div"></div>
-        <div class="stat-item">
-            <span class="stat-num">🇹🇼🇰🇷🇹🇭🇻🇳🇪🇸🇸🇬🇳🇿</span>
-            <span class="stat-label">去過的地方</span>
-        </div>
-        <div class="stats-div"></div>
-        <div class="stat-item">
-            <span class="stat-num">2025</span>
-            <span class="stat-label">頻道創立</span>
-        </div>
-        <div class="stats-div"></div>
-        <div class="stat-item">
-            <span class="stat-num">旅遊 · 生活 · AI</span>
-            <span class="stat-label">創作主題</span>
-        </div>
-    </div>
-</div>
+    <script>
+        const CONTACT_EMAIL = "nashwu0990117@gmail.com";
+        const VIDEO_SOURCE_URL = "videos.json";
+        const FALLBACK_VIDEOS = [
+            { id: '1', title: 'Tokyo Trip: SHIBUYA SKY', thumbnail: 'https://picsum.photos/seed/tokyo/800/450', desc: '東京新地標，360 度無死角！' },
+            { id: '2', title: 'iPhone 15 Pro Max 開箱', thumbnail: 'https://picsum.photos/seed/iphone/800/450', desc: '鈦合金真的比較輕？用了一個月告訴你。' },
+            { id: '3', title: '台北 Top 5 拉麵推薦', thumbnail: 'https://picsum.photos/seed/ramen/800/450', desc: '排兩小時值得嗎？在地人推薦清單。' },
+        ];
+        let ALL_VIDEOS = [], carouselIndex = 0, slidesPerView = 3, libraryOpen = false;
 
-<!-- About -->
-<section id="about">
-    <div class="about-inner">
-        <div class="fade-up">
-            <div class="section-tag">Who Am I</div>
-            <h2 class="about-title">嗨，<br>我是 <em>Nash！</em></h2>
-
-            <p class="about-text">一個喜歡用鏡頭記錄世界的旅遊創作者。現居紐西蘭，也曾在韓國、泰國、越南、西班牙、新加坡留下足跡。</p>
-            <p class="about-text">頻道沒有濾鏡，只有<strong>真實的旅途、真實的生活</strong>。</p>
-
-            <div class="about-pillars">
-                <div class="pillar">
-                    <span class="pillar-icon">🌍</span>
-                    <div class="pillar-text">
-                        <div class="pillar-title">旅遊 VLOG</div>
-                        <div class="pillar-desc">帶你去我去過的地方，看我看過的風景。不管是自由行還是背包客，攻略都在這裡。</div>
-                    </div>
-                </div>
-                <div class="pillar">
-                    <span class="pillar-icon">📱</span>
-                    <div class="pillar-text">
-                        <div class="pillar-title">海外生活記錄</div>
-                        <div class="pillar-desc">在異鄉生活的真實樣子——不美化、不包裝，就是日常。</div>
-                    </div>
-                </div>
-                <div class="pillar">
-                    <span class="pillar-icon">🤖</span>
-                    <div class="pillar-text">
-                        <div class="pillar-title">AI 成長</div>
-                        <div class="pillar-desc">用科技讓創作和生活變得更好。Vibe Coding、AI 工具實測，一起進化。</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="about-tags">
-                <span class="tag">Travel Vlog</span>
-                <span class="tag">海外生活</span>
-                <span class="tag">AI 工具</span>
-                <span class="tag">紐西蘭 🇳🇿</span>
-                <span class="tag">Vibe Coding</span>
-            </div>
-        </div>
-
-        <div class="about-img-wrap fade-up">
-            <div class="about-img-deco1" aria-hidden="true"></div>
-            <div class="about-img-deco2" aria-hidden="true"></div>
-            <div class="about-location">
-                <span class="about-location-dot"></span>
-                <span class="about-location-text">
-                    <strong>Currently in</strong>
-                    New Zealand 🇳🇿
-                </span>
-            </div>
-            <div class="about-img-frame">
-                <img src="pic_pack/NashWu.png" alt="Nash Wu profile photo">
-                <div class="about-badge">
-                    <div class="badge-name">Nash Wu</div>
-                    <div class="badge-role">旅遊創作者 · YouTuber</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Portfolio -->
-<section id="portfolio">
-    <div class="portfolio-inner">
-        <div class="portfolio-header fade-up">
-            <div class="section-tag">My Work</div>
-            <h2 class="portfolio-title">最新<em>影片</em></h2>
-            <p class="portfolio-subtitle">新影片固定更新，開啟小鈴鐺不錯過 🔔</p>
-        </div>
-
-        <div class="loader" id="loading-state"><div class="loader-ring"></div></div>
-
-        <div id="carousel-section" style="display:none">
-            <div class="carousel-wrap">
-                <div class="carousel-viewport">
-                    <div class="carousel-track" id="carousel-track"></div>
-                </div>
-                <button class="carousel-btn prev" onclick="carouselMove(-1)" aria-label="上一支">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <button class="carousel-btn next" onclick="carouselMove(1)" aria-label="下一支">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-            </div>
-            <div class="carousel-dots" id="carousel-dots" role="tablist"></div>
-            <div style="text-align:center;margin-top:40px">
-                <button class="lib-toggle" id="lib-toggle-btn" onclick="toggleLibrary()">
-                    <span id="lib-btn-text">看全部影片</span>
-                    <svg id="lib-chevron" class="lib-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                </button>
-                <div class="video-count" id="video-count-preview"></div>
-            </div>
-        </div>
-
-        <div id="full-library">
-            <div class="lib-divider"><span>全部影片</span></div>
-            <div id="videos-grid"></div>
-            <div class="video-count" id="video-count"></div>
-        </div>
-    </div>
-</section>
-
-<!-- Subscribe CTA Strip -->
-<div class="sub-strip">
-    <div class="sub-strip-inner">
-        <div class="sub-strip-copy">
-            <h3>喜歡我的內容？<br><em>訂閱頻道，一起出發</em></h3>
-            <p>新影片固定更新 · 開啟小鈴鐺不錯過任何旅途</p>
-        </div>
-        <div class="sub-strip-btns">
-            <a href="https://www.youtube.com/@Nash_Wu_17" target="_blank" rel="noopener noreferrer" class="btn-primary">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                立即訂閱
-            </a>
-            <a href="#contact" class="btn-secondary">
-                合作洽詢
-            </a>
-        </div>
-    </div>
-</div>
-
-<!-- Contact -->
-<section id="contact">
-    <div class="contact-inner">
-        <div class="fade-up">
-            <div class="section-tag">Get in Touch</div>
-            <h2 class="contact-title">有話想說？<br><em>來聊聊</em></h2>
-            <p class="contact-desc">不管是旅遊問題、合作邀請，還是單純想打個招呼——都歡迎。</p>
-
-            <div class="contact-collab">
-                <p>✉️ <strong>合作邀約請寄：</strong><br>
-                nashwu0990117@gmail.com<br>
-                <span style="font-size:0.74rem;margin-top:4px;display:block">旅遊品牌、科技產品、創意合作都開放討論 👋</span></p>
-            </div>
-
-            <div class="social-label">Follow me</div>
-            <div class="social-grid">
-                <a href="https://instagram.com/nash_wu_17" target="_blank" rel="noopener noreferrer" class="social-btn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> Instagram
-                </a>
-                <a href="https://www.youtube.com/@Nash_Wu_17" target="_blank" rel="noopener noreferrer" class="social-btn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube
-                </a>
-                <a href="https://threads.com/@nash_wu_17" target="_blank" rel="noopener noreferrer" class="social-btn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg>
-                    Threads
-                </a>
-                <a href="https://vocus.cc/salon/nash_wu_17" target="_blank" rel="noopener noreferrer" class="social-btn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                    Vocus
-                </a>
-                <a href="https://linktr.ee/nash_wu_17" target="_blank" rel="noopener noreferrer" class="social-btn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                    Linktree
-                </a>
-            </div>
-        </div>
-
-        <div class="fade-up">
-            <form class="contact-form" id="contact-form" novalidate>
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label" for="field-name">姓名</label>
-                        <input type="text" id="field-name" name="name" required maxlength="100" placeholder="你的名字" class="form-input" autocomplete="name">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="field-email">Email</label>
-                        <input type="email" id="field-email" name="email" required maxlength="200" placeholder="your@email.com" class="form-input" autocomplete="email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="field-subject">主旨</label>
-                    <input type="text" id="field-subject" name="subject" required maxlength="200" placeholder="合作邀請、問題、或只是打個招呼..." class="form-input">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="field-message">訊息內容</label>
-                    <textarea id="field-message" name="message" required rows="5" maxlength="2000" placeholder="想說的都可以說..." class="form-textarea"></textarea>
-                </div>
-                <button type="submit" class="form-submit">
-                    <span>送出訊息</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                </button>
-            </form>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer>
-    <div class="footer-inner">
-        <div class="footer-brand">Nash<em>Wu</em></div>
-        <span class="footer-copy">© <span id="year"></span> Nash Wu · 用鏡頭記錄世界</span>
-        <button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-            回到頂部 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-        </button>
-    </div>
-</footer>
-
-<!-- Modal -->
-<div id="video-modal" role="dialog" aria-modal="true" aria-label="Video player">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeVideo()" aria-label="Close video">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-        <iframe id="youtube-player" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube video player"></iframe>
-    </div>
-    <div class="modal-bg" onclick="closeVideo()"></div>
-</div>
-
-<script>
-    const CONTACT_EMAIL = "nashwu0990117@gmail.com";
-    const VIDEO_SOURCE_URL = "videos.json";
-    const FALLBACK_VIDEOS = [
-        { id: '1', title: 'Tokyo Trip: SHIBUYA SKY', thumbnail: 'https://picsum.photos/seed/tokyo/800/450', desc: '東京新地標，360 度無死角！' },
-        { id: '2', title: 'iPhone 15 Pro Max 開箱', thumbnail: 'https://picsum.photos/seed/iphone/800/450', desc: '鈦合金真的比較輕？用了一個月告訴你。' },
-        { id: '3', title: '台北 Top 5 拉麵推薦', thumbnail: 'https://picsum.photos/seed/ramen/800/450', desc: '排兩小時值得嗎？在地人推薦清單。' },
-    ];
-    let ALL_VIDEOS = [], carouselIndex = 0, slidesPerView = 3, libraryOpen = false;
-
-    function sanitize(str) {
-        const d = document.createElement('div');
-        d.textContent = String(str || '');
-        return d.innerHTML;
-    }
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50));
-
-    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-        const m = document.getElementById('mobile-menu');
-        m.style.display = m.style.display === 'block' ? 'none' : 'block';
-    });
-    document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobile-menu').style.display = 'none'));
-
-    const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-
-    async function getVideos() {
-        try {
-            const r = await fetch(`${VIDEO_SOURCE_URL}?t=${Date.now()}`);
-            if (!r.ok) throw new Error();
-            const d = await r.json();
-            const raw = Array.isArray(d) ? d : (d.items || FALLBACK_VIDEOS);
-            const SKIP = new Set(['Private video', 'Deleted video', '']);
-            return raw.filter(v => v.id && !SKIP.has(v.title) && /^[a-zA-Z0-9_-]{6,20}$/.test(v.id));
-        } catch { return FALLBACK_VIDEOS.map(v => ({ ...v, url: `https://www.youtube.com/watch?v=${v.id}` })); }
-    }
-
-    function isValidVideoId(id) {
-        return typeof id === 'string' && /^[a-zA-Z0-9_-]{6,20}$/.test(id);
-    }
-
-    function createCard(video, isSlide = false) {
-        const isEmbed = isValidVideoId(video.id);
-        const clickAttr = isEmbed
-            ? `onclick="playVideo('${sanitize(video.id)}')" role="button" tabindex="0"`
-            : `onclick="window.open('${encodeURI(video.url||'')}','_blank','noopener,noreferrer')" role="button" tabindex="0"`;
-        return `<div class="video-card ${isSlide ? 'carousel-slide' : ''}" ${clickAttr}>
-            <div class="video-thumb">
-                <img src="${sanitize(video.thumbnail)}" alt="${sanitize(video.title)}" loading="lazy">
-                <div class="video-overlay" aria-hidden="true"><div class="play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-left:3px" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
-            </div>
-            <div class="video-info">
-                <div class="video-title">${sanitize(video.title)}</div>
-                <div class="video-desc">${sanitize(video.desc)}</div>
-            </div>
-        </div>`;
-    }
-
-    function getSPV() { return window.innerWidth < 769 ? 1 : window.innerWidth < 1025 ? 2 : 3; }
-
-    function renderDots() {
-        const el = document.getElementById('carousel-dots');
-        const max = Math.max(0, ALL_VIDEOS.length - slidesPerView);
-        el.innerHTML = '';
-        for (let i = 0; i <= max; i++) {
-            const d = document.createElement('button');
-            d.className = 'dot' + (i === carouselIndex ? ' active' : '');
-            d.setAttribute('aria-label', `第 ${i + 1} 頁`);
-            d.onclick = () => goToSlide(i);
-            el.appendChild(d);
+        function sanitize(str) {
+            const d = document.createElement('div');
+            d.textContent = String(str || '');
+            return d.innerHTML;
         }
-    }
 
-    function goToSlide(idx) {
-        const track = document.getElementById('carousel-track');
-        slidesPerView = getSPV();
-        const max = Math.max(0, ALL_VIDEOS.length - slidesPerView);
-        carouselIndex = idx < 0 ? max : idx > max ? 0 : idx;
-        const slide = track.querySelector('.carousel-slide');
-        if (!slide) return;
-        track.style.transform = `translateX(-${carouselIndex * (slide.offsetWidth + 21)}px)`;
-        renderDots();
-    }
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-    function carouselMove(dir) { goToSlide(carouselIndex + dir); }
-    window.addEventListener('resize', () => { slidesPerView = getSPV(); goToSlide(carouselIndex); });
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
 
-    function toggleLibrary() {
-        libraryOpen = !libraryOpen;
-        document.getElementById('full-library').classList.toggle('open', libraryOpen);
-        document.getElementById('lib-chevron').classList.toggle('open', libraryOpen);
-        document.getElementById('lib-btn-text').textContent = libraryOpen ? '收起影片庫' : '看全部影片';
-        if (libraryOpen) setTimeout(() => document.getElementById('full-library').scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
-    }
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const m = document.getElementById('mobile-menu');
+            m.style.display = m.style.display === 'block' ? 'none' : 'block';
+        });
 
-    async function init() {
-        ALL_VIDEOS = await getVideos();
-        document.getElementById('loading-state').style.display = 'none';
-        document.getElementById('carousel-track').innerHTML = ALL_VIDEOS.map(v => createCard(v, true)).join('');
-        document.getElementById('videos-grid').innerHTML = ALL_VIDEOS.map(v => createCard(v, false)).join('');
-        const ct = `共 ${ALL_VIDEOS.length} 支影片`;
-        document.getElementById('video-count').textContent = ct;
-        document.getElementById('video-count-preview').textContent = ct;
-        document.getElementById('stat-videos').textContent = ALL_VIDEOS.length;
-        document.getElementById('carousel-section').style.display = 'block';
-        renderDots();
-    }
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-    function playVideo(id) {
-        if (!isValidVideoId(id)) return;
-        document.getElementById('youtube-player').src = `https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
-        document.getElementById('video-modal').classList.add('open');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeVideo() {
-        document.getElementById('video-modal').classList.remove('open');
-        document.getElementById('youtube-player').src = '';
-        document.body.style.overflow = '';
-    }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
+        async function getVideos() {
+            try {
+                const r = await fetch(`${VIDEO_SOURCE_URL}?t=${Date.now()}`);
+                if (!r.ok) throw new Error();
+                const d = await r.json();
+                const raw = Array.isArray(d) ? d : (d.items || FALLBACK_VIDEOS);
+                return raw.filter(v => v.id && v.title !== 'Private video');
+            } catch { return FALLBACK_VIDEOS; }
+        }
 
-    document.getElementById('contact-form').addEventListener('submit', async e => {
-        e.preventDefault();
-        const honey = e.target.querySelector('input[name="_honey"]');
-        if (honey && honey.value.trim() !== '') return;
+        function isValidVideoId(id) {
+            return typeof id === 'string' && /^[a-zA-Z0-9_-]{6,20}$/.test(id);
+        }
 
-        const btn = e.target.querySelector('button[type="submit"]');
-        const span = btn.querySelector('span');
-        span.textContent = '傳送中...';
-        btn.disabled = true;
+        function createCard(video, isSlide = false) {
+            const clickAttr = `onclick="playVideo('${sanitize(video.id)}')"`;
+            return `
+                <div class="video-card ${isSlide ? 'carousel-slide' : ''}" ${clickAttr} role="button" tabindex="0">
+                    <div class="video-thumb">
+                        <img src="${sanitize(video.thumbnail)}" alt="${sanitize(video.title)}" loading="lazy">
+                        <div class="video-overlay">
+                            <div class="play-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 2px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">${sanitize(video.title)}</div>
+                        <div class="video-desc">${sanitize(video.desc || '')}</div>
+                    </div>
+                </div>
+            `;
+        }
 
-        try {
-            const r = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
-                method: 'POST',
-                body: new FormData(e.target),
-                headers: { 'Accept': 'application/json' }
-            });
-            if (r.ok) { span.textContent = '已送出 ✓'; e.target.reset(); }
-            else t
+        function getSPV() { return window.innerWidth < 769 ? 1 : window.innerWidth < 1025 ? 2 : 3; }
+
+        function renderDots() {
+            const el = document.getElementById('carousel-dots');
+            const max = Math.max(0, ALL_VIDEOS.length - getSPV());
+            el.innerHTML = '';
+            for (let i = 0; i <= max; i++) {
+                const d = document.createElement('button');
+                d.className = 'dot' + (i === carouselIndex ? ' active' : '');
+                d.onclick = () => goToSlide(i);
+                el.appendChild(d);
+            }
+        }
+
+        function goToSlide(idx) {
+            const track = document.getElementById('carousel-track');
+            slidesPerView = getSPV();
+            const max = Math.max(0, ALL_VIDEOS.length - slidesPerView);
+            carouselIndex = Math.min(Math.max(0, idx), max);
+            const slide = track.querySelector('.carousel-slide');
+            if (!slide) return;
+            const gap = 24;
+            track.style.transform = `translateX(-${carouselIndex * (slide.offsetWidth + gap)}px)`;
+            renderDots();
+        }
+
+        function carouselMove(dir) { goToSlide(carouselIndex + dir); }
+        window.addEventListener('resize', () => goToSlide(carouselIndex));
+
+        function toggleLibrary() {
+            libraryOpen = !libraryOpen;
+            document.getElementById('full-library').classList.toggle('open', libraryOpen);
+            document.getElementById('lib-chevron').style.transform = libraryOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+            document.getElementById('lib-btn-text').textContent = libraryOpen ? '收起影片庫' : '看全部影片';
+        }
+
+        function playVideo(id) {
+            if (!isValidVideoId(id)) return;
+            document.getElementById('youtube-player').src = `https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+            document.getElementById('video-modal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideo() {
+            document.getElementById('video-modal').classList.remove('open');
+            document.getElementById('youtube-player').src = '';
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', async e => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const span = btn.querySelector('span');
+            const originalText = span.textContent;
+            
+            span.textContent = '傳送中...';
+            btn.disabled = true;
+
+            try {
+                const r = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+                    method: 'POST',
+                    body: new FormData(e.target),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (r.ok) { 
+                    span.textContent = '已送出 ✓'; 
+                    e.target.reset(); 
+                } else { throw new Error(); }
+            } catch {
+                span.textContent = '傳送失敗，請再試一次';
+                setTimeout(() => { span.textContent = originalText; btn.disabled = false; }, 3000);
+            }
+        });
+
+        async function init() {
+            ALL_VIDEOS = await getVideos();
+            document.getElementById('loading-state').style.display = 'none';
+            if (ALL_VIDEOS.length > 0) {
+                document.getElementById('carousel-track').innerHTML = ALL_VIDEOS.map(v => createCard(v, true)).join('');
+                document.getElementById('videos-grid').innerHTML = ALL_VIDEOS.map(v => createCard(v, false)).join('');
+                const countStr = `共 ${ALL_VIDEOS.length} 支影片`;
+                document.getElementById('video-count').textContent = countStr;
+                document.getElementById('video-count-preview').textContent = countStr;
+                document.getElementById('stat-videos').textContent = ALL_VIDEOS.length;
+                document.getElementById('carousel-section').style.display = 'block';
+                renderDots();
+            }
+        }
+        init();
+    </script>
+</body>
+</html>
