@@ -1,35 +1,38 @@
-name: Update Videos
+name: Update YouTube Videos
 
-"on":
+on:
   schedule:
-    - cron: '0 */2 * * *'
-  workflow_dispatch:
+    # 每天早上 8 點自動執行（UTC 時間，台灣時間下午 4 點）
+    - cron: '0 8 * * *'
+  workflow_dispatch:  # 也可以手動觸發
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
-
+        
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
+          
       - name: Install dependencies
-        run: pip install requests
-
-      - name: Run fetch script
+        run: |
+          pip install requests python-dotenv
+          
+      - name: Fetch videos
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
-        run: python fetch_videos.py
-
+        run: |
+          python3 fetch_videos.py
+          
       - name: Commit and push if changed
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
           git add videos.json
-          git diff --cached --quiet || git commit -m "Auto update videos"
-          git push
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🎥 Auto-update videos.json [skip ci]" && git push)

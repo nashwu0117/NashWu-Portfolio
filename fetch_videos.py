@@ -15,6 +15,11 @@
 
 import json
 import os
+from dotenv import load_dotenv
+
+# 載入 .env 檔案（本地開發用）
+load_dotenv()
+
 import requests
 
 # ── Config ──────────────────────────────────────────────────────────────────
