@@ -1,6 +1,6 @@
-# Nash Wu 17 - Creator Portfolio
+# Nash Wu - Creator Portfolio
 
-This is a personal branding website tailored for YouTuber / Creator **Nash Wu 17**.
+This is a personal branding website tailored for YouTuber / Creator **Nash Wu**.
 This project is a static site hosted on GitHub Pages, utilizing **GitHub Actions** to automate YouTube video updates and **FormSubmit** for contact form handling without a backend server.
 
 ## 🚀 Features
@@ -29,7 +29,7 @@ This project is a static site hosted on GitHub Pages, utilizing **GitHub Actions
 
 **Copyright © 2026 Nash Wu. All rights reserved.**
 
-This project, **Nash Wu 17 - Creator Portfolio**, including all source code, visual designs, layouts, and original content, is the exclusive property of **Nash Wu**.
+This project, **Nash Wu - Creator Portfolio**, including all source code, visual designs, layouts, and original content, is the exclusive property of **Nash Wu**.
 
 *   **No Unauthorized Redistribution:** You are **strictly prohibited** from copying, modifying, distributing, or re-hosting this project (or any part of it) without explicit written permission from the author.
 *   **Not Open Source:** While this repository is publicly visible for portfolio display and transparency purposes, it does **not** grant any license for others to clone, "fork and use," or repurpose the design for personal or commercial websites.
