@@ -58,6 +58,11 @@
         .nav-links a:hover::after { width: 100%; }
         .nav-cta { background: var(--accent) !important; color: var(--paper) !important; padding: 0.5rem 1.2rem !important; border-radius: 4px !important; }
         .nav-cta::after { display: none !important; }
+        .nav-home { display: inline-flex; align-items: center; gap: 5px; color: var(--muted) !important; }
+        .nav-home::after { display: none !important; }
+        .nav-home:hover { color: var(--accent) !important; }
+        .nav-home-icon { display: inline-block; font-size: 0.95rem; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+        .nav-home:hover .nav-home-icon { transform: rotate(-360deg); }
         .nav-mobile-btn { display: none; background: none; border: none; color: var(--ink); cursor: none; }
         .mobile-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--paper); border-bottom: 1px solid var(--border); padding: 1rem 3rem 1.5rem; }
         .mobile-menu a { display: block; color: var(--ink); text-decoration: none; padding: 0.8rem 0; font-weight: 500; border-bottom: 1px solid var(--border); cursor: none; }
@@ -285,6 +290,7 @@
 <nav id="navbar">
     <a href="#" class="logo">N<span>.</span>WU</a>
     <ul class="nav-links">
+        <li><a href="../index.html" class="nav-home"><span class="nav-home-icon">↩</span>主頁</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#portfolio">影片</a></li>
         <li><a href="#contact" class="nav-cta">聯絡我</a></li>
@@ -293,6 +299,7 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
     <div class="mobile-menu" id="mobile-menu">
+        <a href="../index.html">↩ 主頁</a>
         <a href="#about">About</a>
         <a href="#portfolio">影片</a>
         <a href="#contact">聯絡我</a>
