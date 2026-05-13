@@ -35,10 +35,22 @@
             background: var(--paper);
             color: var(--ink);
             overflow-x: hidden;
-            cursor: none;
         }
 
-        /* 自訂游標 */
+        /* 自訂游標 - 只在非觸控裝置顯示 */
+        body:not(.touch-device) {
+            cursor: none;
+        }
+        
+        .cursor, .cursor-ring {
+            display: none;
+        }
+        
+        body:not(.touch-device) .cursor,
+        body:not(.touch-device) .cursor-ring {
+            display: block;
+        }
+        
         .cursor {
             position: fixed; width: 10px; height: 10px;
             background: var(--accent); border-radius: 50%;
@@ -75,7 +87,10 @@
         .logo {
             font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem;
             letter-spacing: 3px; color: var(--ink);
-            text-decoration: none; cursor: none;
+            text-decoration: none; cursor: pointer;
+        }
+        body:not(.touch-device) .logo {
+            cursor: none;
         }
         .logo span { color: var(--accent); }
         .nav-right { display: flex; align-items: center; gap: 2.5rem; }
@@ -84,9 +99,13 @@
             font-size: 0.78rem; font-weight: 500;
             letter-spacing: 1.5px; text-transform: uppercase;
             color: var(--muted); text-decoration: none;
-            cursor: none; position: relative;
+            cursor: pointer; position: relative;
             transition: color 0.25s;
             background: none; border: none; font-family: inherit;
+        }
+        body:not(.touch-device) .nav-links a,
+        body:not(.touch-device) .nav-links button {
+            cursor: none;
         }
         .nav-links a::after, .nav-links button::after {
             content: ''; position: absolute;
@@ -100,11 +119,91 @@
             font-family: 'DM Mono', monospace; font-size: 0.7rem;
             letter-spacing: 1px; background: none;
             border: 1px solid var(--border); color: var(--muted);
-            padding: 5px 12px; cursor: none;
+            padding: 5px 12px; cursor: pointer;
             transition: all 0.25s; border-radius: 2px;
+        }
+        body:not(.touch-device) .lang-btn {
+            cursor: none;
         }
         .lang-btn:hover {
             background: var(--ink); color: var(--paper); border-color: var(--ink);
+        }
+
+        /* 漢堡選單按鈕 */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--ink);
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* 手機版側邊選單 */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--paper);
+            z-index: 1000;
+            transition: right 0.4s cubic-bezier(0.4,0,0.2,1);
+            display: flex;
+            flex-direction: column;
+            padding: 100px 2rem 2rem;
+            overflow-y: auto;
+        }
+        .mobile-menu.active {
+            right: 0;
+        }
+        .mobile-menu-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .mobile-menu-links a,
+        .mobile-menu-links button {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            color: var(--ink);
+            text-decoration: none;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 0;
+            cursor: pointer;
+            transition: color 0.25s;
+            width: 100%;
+        }
+        .mobile-menu-links a:hover,
+        .mobile-menu-links button:hover {
+            color: var(--accent);
+        }
+        .mobile-menu-footer {
+            margin-top: auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
         }
 
         /* 頁面系統 */
@@ -144,10 +243,13 @@
             letter-spacing: 1.5px; text-transform: uppercase;
             background: var(--ink); color: var(--paper);
             text-decoration: none; padding: 14px 28px;
-            display: inline-block; cursor: none;
+            display: inline-block; cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
             border: 1px solid var(--ink);
             position: relative; overflow: hidden;
+        }
+        body:not(.touch-device) .btn-primary {
+            cursor: none;
         }
         .btn-primary::after {
             content: ''; position: absolute; inset: 0;
@@ -159,10 +261,13 @@
         .btn-primary:hover { border-color: var(--accent); }
         .btn-ghost {
             font-size: 0.78rem; color: var(--muted);
-            text-decoration: none; cursor: none;
+            text-decoration: none; cursor: pointer;
             display: flex; align-items: center; gap: 6px;
             transition: color 0.25s;
             background: none; border: none; font-family: inherit;
+        }
+        body:not(.touch-device) .btn-ghost {
+            cursor: none;
         }
         .btn-ghost:hover { color: var(--accent); }
         .btn-ghost .arrow { transition: transform 0.3s; }
@@ -237,8 +342,11 @@
             background: var(--paper); padding: 3rem;
             text-decoration: none; color: inherit;
             display: flex; flex-direction: column; gap: 1.5rem;
-            cursor: none; transition: background 0.3s ease;
+            cursor: pointer; transition: background 0.3s ease;
             position: relative; overflow: hidden;
+        }
+        body:not(.touch-device) .work-card {
+            cursor: none;
         }
         .work-card:hover { background: var(--cream); }
         .work-card-num {
@@ -402,6 +510,8 @@
         @media (max-width: 900px) {
             nav { padding: 1.2rem 1.5rem; }
             .nav-links { display: none; }
+            .lang-btn { display: none; }
+            .menu-toggle { display: flex; }
             .hero { grid-template-columns: 1fr; }
             .hero-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
             .hero-skills { grid-template-columns: 1fr 1fr; }
@@ -440,15 +550,33 @@
                 <li><a href="" data-tw="課程（待開發）" data-en="Courses (Coming soon)">課程（待開發）</a></li>
             </ul>
             <button class="lang-btn" onclick="toggleLanguage()">中文 / EN</button>
+            <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="選單">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
+
+    <!-- 手機版選單 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links">
+            <li><button onclick="showPage('home'); closeMobileMenu();" data-tw="首頁" data-en="Home">首頁</button></li>
+            <li><button onclick="showPage('about'); closeMobileMenu();" data-tw="關於" data-en="About">關於</button></li>
+            <li><a href="youtube/index.html" data-tw="影片" data-en="Videos">影片</a></li>
+            <li><a href="" data-tw="筆記" data-en="Blog">筆記</a></li>
+            <li><a href="" data-tw="課程" data-en="Courses">課程</a></li>
+        </ul>
+        <div class="mobile-menu-footer">
+            <button class="lang-btn" onclick="toggleLanguage()" style="display: inline-block; margin-top: 1rem;">中文 / EN</button>
+        </div>
+    </div>
 
     <!-- 首頁 -->
     <section id="home" class="page active">
         <div class="hero">
             <div class="hero-left">
                 <div>
-                    <!-- 💡 修改這裡：Hero 小標籤 -->
                     <p class="hero-eyebrow" data-tw="創作者 × 開發者 × AI" data-en="Creator × Developer × AI">創作者 × 開發者 × AI</p>
                     
                     <h1 class="hero-name">
@@ -456,10 +584,9 @@
                         <span class="line2">WU</span>
                     </h1>
                     
-                    <!-- 💡 修改這裡：Hero 描述文字 -->
                     <div class="hero-desc">
                         <div data-lang="tw">
-                            <p>用鏡頭記錄世界，用程式解決問題，用 AI 提升效率。從台灣到世界，持續探索、創作、成長。</p>
+                            <p>用鏡頭記錄世界,用程式解決問題,用 AI 提升效率。從台灣到世界,持續探索、創作、成長。</p>
                         </div>
                         <div data-lang="en">
                             <p>Documenting the world through lens, solving problems with code, boosting efficiency with AI. From Taiwan to the world, constantly exploring, creating, and growing.</p>
@@ -478,7 +605,6 @@
                 </div>
             </div>
 
-            <!-- 💡 修改這裡：技能格子內容 -->
             <div class="hero-right">
                 <div class="hero-skills">
                     <div class="skill-cell" data-num="01">
@@ -515,12 +641,6 @@
                     <p class="section-label" data-tw="精選作品" data-en="Featured">精選作品</p>
                     <h2 class="section-title" data-tw="最新成果" data-en="Latest Projects">最新成果</h2>
                 </div>
-                <!--
-                <button onclick="showPage('about')" class="btn-ghost">
-                    <span data-tw="查看時間軸" data-en="View timeline">查看時間軸</span>
-                    <span class="arrow">→</span>
-                </button>
-                -->
             </div>
 
             <div class="work-grid">
@@ -531,15 +651,6 @@
                     <span class="work-card-tag" data-tw="影像創作" data-en="Filmmaking">影像創作</span>
                     <span class="work-card-arrow">↗</span>
                 </a>
-                <!--
-                <a href="blog/index.html" class="work-card small">
-                    <p class="work-card-num">002</p>
-                    <h3 data-tw="OpenClaw AI" data-en="OpenClaw AI">OpenClaw AI</h3>
-                    <p data-tw="智慧爬蟲系統，整合本地 LLM 實現自動化資料處理。" data-en="Smart scraping with local LLM for automated data processing.">智慧爬蟲系統，整合本地 LLM 實現自動化資料處理。</p>
-                    <span class="work-card-tag" data-tw="AI 開發" data-en="AI Dev">AI 開發</span>
-                    <span class="work-card-arrow">↗</span>''
-                </a>
-                -->
             </div>
         </div>
 
@@ -551,26 +662,6 @@
 
     <!-- 關於頁面 -->
     <section id="about" class="page">
-        <!--
-        <div class="status-strip">
-            <div class="status-item">
-                <span class="status-label" data-tw="狀態" data-en="Status">狀態</span>
-                <span class="status-value"><span class="status-dot"></span><span data-tw="創作中" data-en="Creating">創作中</span></span>
-            </div>
-            <div class="status-item">
-                <span class="status-label" data-tw="所在地" data-en="Location">所在地</span>
-                <span class="status-value" data-tw="Dunedin, 紐西蘭" data-en="New Zealand">紐西蘭</span>
-            </div>
-            <div class="status-item">
-                <span class="status-label" data-tw="頻道訂閱" data-en="Subscribers">頻道訂閱</span>
-                <span class="status-value">@Nash_Wu_17</span>
-            </div>
-            <div class="status-item">
-                <span class="status-label" data-tw="當前專案" data-en="Current">當前專案</span>
-                <span class="status-value" data-tw="個人品牌網站 v2" data-en="Personal site v2">個人品牌網站 v2</span>
-            </div>
-        </div>
-        -->
         <div class="about-layout">
             <div class="about-left">
                 <div>
@@ -580,12 +671,11 @@
                         <span class="name" data-tw="開發者" data-en="DEVELOPER">開發者</span>
                     </h1>
                     
-                    <!-- 💡 修改這裡：個人簡介 -->
                     <div class="about-bio">
                         <div data-lang="tw">
-                            <p>我是 Nash Wu，一個喜歡用鏡頭記錄世界的旅遊創作者。經營 YouTube 頻道 @Nash_Wu_17。</p>
-                            <p>從台灣到世界各地——每段旅程都是成長，每個故事都值得被記錄。</p>
-                            <p>同時熱衷於用 Python 和 AI 工具打造自動化系統，讓創作流程更高效。相信科技和藝術結合，能創造出更有趣的東西。</p>
+                            <p>我是 Nash Wu,一個喜歡用鏡頭記錄世界的旅遊創作者。經營 YouTube 頻道 @Nash_Wu_17。</p>
+                            <p>從台灣到世界各地——每段旅程都是成長,每個故事都值得被記錄。</p>
+                            <p>同時熱衷於用 Python 和 AI 工具打造自動化系統,讓創作流程更高效。相信科技和藝術結合,能創造出更有趣的東西。</p>
                         </div>
                         <div data-lang="en">
                             <p>I'm Nash Wu, a travel content creator documenting the world through my lens. Based in Dunedin, New Zealand, running YouTube channel @Nash_Wu_17.</p>
@@ -595,7 +685,6 @@
                     </div>
                 </div>
 
-                <!-- 💡 修改這裡：技能清單 -->
                 <div class="skills-list">
                     <div class="skill-row">
                         <strong data-tw="影像製作" data-en="Filmmaking">影像製作</strong>
@@ -620,38 +709,17 @@
                 <p class="timeline-label" data-tw="成長時軸" data-en="Timeline">成長時軸</p>
                 
                 <div class="timeline">
-                    <!-- ========================================
-                         💡 新增時間軸項目：複製這個區塊
-                         修改 tl-date（日期）
-                         修改 tl-title（標題）
-                         修改 tl-desc（描述）
-                         ======================================== -->
                     <div class="tl-item">
                         <p class="tl-date">2025.05</p>
                         <p class="tl-title" data-tw="個人品牌網站 v2.0" data-en="Personal Site v2.0">個人品牌網站 v2.0</p>
-                        <p class="tl-desc" data-tw="重新設計網站架構，整合 YouTube、專案展示、課程平台。模組化設計便於未來擴充。" data-en="Redesigned site architecture, integrating YouTube, projects, courses. Modular design for expansion.">重新設計網站架構，整合 YouTube、專案展示、課程平台。模組化設計便於未來擴充。</p>
-                    </div>
-                    <!--
-                    <div class="tl-item">
-                        <p class="tl-date">2025.04</p>
-                        <p class="tl-title" data-tw="YouTube 自動化系統" data-en="YouTube Automation">YouTube 自動化系統</p>
-                        <p class="tl-desc" data-tw="使用 Python + YouTube API 打造影片自動同步系統，搭配 GitHub Actions 每日更新。" data-en="Built video sync with Python + YouTube API, automated via GitHub Actions.">使用 Python + YouTube API 打造影片自動同步系統，搭配 GitHub Actions 每日更新。</p>
+                        <p class="tl-desc" data-tw="重新設計網站架構,整合 YouTube、專案展示、課程平台。模組化設計便於未來擴充。" data-en="Redesigned site architecture, integrating YouTube, projects, courses. Modular design for expansion.">重新設計網站架構,整合 YouTube、專案展示、課程平台。模組化設計便於未來擴充。</p>
                     </div>
                     
-                    <div class="tl-item">
-                        <p class="tl-date">2025.03</p>
-                        <p class="tl-title" data-tw="AI 爬蟲機器人 OpenClaw" data-en="OpenClaw AI Bot">AI 爬蟲機器人 OpenClaw</p>
-                        <p class="tl-desc" data-tw="開發智慧爬蟲系統，整合 Ollama 本地 LLM，實現自動化資料收集與處理。" data-en="Developed smart scraping system with Ollama local LLM integration.">開發智慧爬蟲系統，整合 Ollama 本地 LLM，實現自動化資料收集與處理。</p>
-                    </div>
-                    -->
                     <div class="tl-item">
                         <p class="tl-date">2025.01</p>
                         <p class="tl-title" data-tw="YouTube 頻道創立" data-en="YouTube Launch">YouTube 頻道創立</p>
-                        <p class="tl-desc" data-tw="開始經營 @Nash_Wu_17 頻道，記錄旅遊 VLOG、海外生活、AI 學習心得。" data-en="Started @Nash_Wu_17 channel, documenting travel, life, AI learning.">開始經營 @Nash_Wu_17 頻道，記錄旅遊 VLOG、海外生活、AI 學習心得。</p>
+                        <p class="tl-desc" data-tw="開始經營 @Nash_Wu_17 頻道,記錄旅遊 VLOG、海外生活、AI 學習心得。" data-en="Started @Nash_Wu_17 channel, documenting travel, life, AI learning.">開始經營 @Nash_Wu_17 頻道,記錄旅遊 VLOG、海外生活、AI 學習心得。</p>
                     </div>
-                    
-                    <!-- 💡 在這裡新增更多時間軸項目（複製上面的 <div class="tl-item">...</div> 區塊） -->
-                    
                 </div>
             </div>
         </div>
@@ -663,38 +731,75 @@
     </section>
 
     <script>
-        // 游標功能
-        const cursor = document.getElementById('cursor');
-        const ring = document.getElementById('cursorRing');
-        let mx = 0, my = 0, rx = 0, ry = 0;
-
-        document.addEventListener('mousemove', e => {
-            mx = e.clientX; my = e.clientY;
-            cursor.style.left = mx + 'px';
-            cursor.style.top = my + 'px';
-        });
-
-        function animRing() {
-            rx += (mx - rx) * 0.12;
-            ry += (my - ry) * 0.12;
-            ring.style.left = rx + 'px';
-            ring.style.top = ry + 'px';
-            requestAnimationFrame(animRing);
+        // 觸控裝置偵測
+        function isTouchDevice() {
+            return (('ontouchstart' in window) ||
+                   (navigator.maxTouchPoints > 0) ||
+                   (navigator.msMaxTouchPoints > 0));
         }
-        animRing();
 
-        document.querySelectorAll('a, button, .skill-cell, .work-card, .tl-item').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.width = '20px'; cursor.style.height = '20px';
-                ring.style.width = '52px'; ring.style.height = '52px';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.style.width = '10px'; cursor.style.height = '10px';
-                ring.style.width = '36px'; ring.style.height = '36px';
-            });
-        });
+        // 初始化：如果是觸控裝置，加上 class
+        if (isTouchDevice()) {
+            document.body.classList.add('touch-device');
+        }
 
-        // 跑馬燈（💡 修改這裡的文字陣列改變跑馬燈內容）
+        // 游標功能（僅非觸控裝置）
+        if (!isTouchDevice()) {
+            const cursor = document.getElementById('cursor');
+            const ring = document.getElementById('cursorRing');
+            let mx = 0, my = 0, rx = 0, ry = 0;
+
+            document.addEventListener('mousemove', e => {
+                mx = e.clientX; my = e.clientY;
+                cursor.style.left = mx + 'px';
+                cursor.style.top = my + 'px';
+            });
+
+            function animRing() {
+                rx += (mx - rx) * 0.12;
+                ry += (my - ry) * 0.12;
+                ring.style.left = rx + 'px';
+                ring.style.top = ry + 'px';
+                requestAnimationFrame(animRing);
+            }
+            animRing();
+
+            document.querySelectorAll('a, button, .skill-cell, .work-card, .tl-item').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.width = '20px'; cursor.style.height = '20px';
+                    ring.style.width = '52px'; ring.style.height = '52px';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.width = '10px'; cursor.style.height = '10px';
+                    ring.style.width = '36px'; ring.style.height = '36px';
+                });
+            });
+        }
+
+        // 手機選單功能
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            menu.classList.toggle('active');
+            toggle.classList.toggle('active');
+            
+            // 防止背景滾動
+            if (menu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            menu.classList.remove('active');
+            toggle.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // 跑馬燈
         const items = ['YOUTUBE', 'PYTHON', 'TRAVEL', 'AI', 'VLOG', 'CODING', 'CREATING'];
         const track = document.getElementById('marqueeTrack');
         const doubled = [...items, ...items];
@@ -711,6 +816,7 @@
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             window.scrollTo(0, 0);
+            closeMobileMenu(); // 切換頁面時關閉選單
         }
 
         // 雙語切換
