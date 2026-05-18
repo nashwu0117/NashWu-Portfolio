@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
+    <link rel="icon" type="image/x-icon" href="pic_pack/NashWu.png">
+    <link rel="icon" type="image/png" href="pic_pack/NashWu.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Nash Wu — 創作者 × 開發者 × AI">
     <title>Nash Wu | Creator & Developer & AI </title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
     <style>
         /* ========================================
            全域設定 & CSS 變數
-           ======================================== */  
-        *, *::before, *::after {
-            margin: 0; padding: 0; box-sizing: border-box;
+           ======================================== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         :root {
@@ -24,11 +33,13 @@
             --accent: #c8401a;
             --accent2: #1a5fc8;
             --muted: #7a7570;
-            --faint: rgba(10,10,8,0.06);
-            --border: rgba(10,10,8,0.12);
+            --faint: rgba(10, 10, 8, 0.06);
+            --border: rgba(10, 10, 8, 0.12);
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'DM Sans', sans-serif;
@@ -40,17 +51,26 @@
 
         /* 自訂游標 */
         .cursor {
-            position: fixed; width: 10px; height: 10px;
-            background: var(--accent); border-radius: 50%;
-            pointer-events: none; z-index: 9999;
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
             transform: translate(-50%, -50%);
             transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease;
             mix-blend-mode: multiply;
         }
+
         .cursor-ring {
-            position: fixed; width: 36px; height: 36px;
-            border: 1.5px solid var(--accent); border-radius: 50%;
-            pointer-events: none; z-index: 9998;
+            position: fixed;
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
             transform: translate(-50%, -50%);
             transition: transform 0.18s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
             opacity: 0.5;
@@ -58,380 +78,904 @@
 
         /* 紙張紋理 */
         body::after {
-            content: ''; position: fixed; inset: 0;
+            content: '';
+            position: fixed;
+            inset: 0;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
-            pointer-events: none; z-index: 9000; opacity: 0.4;
+            pointer-events: none;
+            z-index: 9000;
+            opacity: 0.4;
         }
 
         /* 導航列 */
         nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-            display: flex; justify-content: space-between; align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 1.4rem 3rem;
-            background: rgba(242,237,230,0.88);
+            background: rgba(242, 237, 230, 0.88);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
         }
+
         .logo {
-            font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem;
-            letter-spacing: 3px; color: var(--ink);
-            text-decoration: none; cursor: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            color: var(--ink);
+            text-decoration: none;
+            cursor: none;
         }
-        .logo span { color: var(--accent); }
-        .nav-right { display: flex; align-items: center; gap: 2.5rem; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a, .nav-links button {
-            font-size: 0.78rem; font-weight: 500;
-            letter-spacing: 1.5px; text-transform: uppercase;
-            color: var(--muted); text-decoration: none;
-            cursor: none; position: relative;
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a,
+        .nav-links button {
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-decoration: none;
+            cursor: none;
+            position: relative;
             transition: color 0.25s;
-            background: none; border: none; font-family: inherit;
+            background: none;
+            border: none;
+            font-family: inherit;
         }
-        .nav-links a::after, .nav-links button::after {
-            content: ''; position: absolute;
-            bottom: -3px; left: 0; width: 0; height: 1px;
+
+        .nav-links a::after,
+        .nav-links button::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1px;
             background: var(--accent);
-            transition: width 0.35s cubic-bezier(0.4,0,0.2,1);
+            transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .nav-links a:hover, .nav-links button:hover { color: var(--ink); }
-        .nav-links a:hover::after, .nav-links button:hover::after { width: 100%; }
+
+        .nav-links a:hover,
+        .nav-links button:hover {
+            color: var(--ink);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links button:hover::after {
+            width: 100%;
+        }
+
         .lang-btn {
-            font-family: 'DM Mono', monospace; font-size: 0.7rem;
-            letter-spacing: 1px; background: none;
-            border: 1px solid var(--border); color: var(--muted);
-            padding: 5px 12px; cursor: none;
-            transition: all 0.25s; border-radius: 2px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 5px 12px;
+            cursor: none;
+            transition: all 0.25s;
+            border-radius: 2px;
         }
+
         .lang-btn:hover {
-            background: var(--ink); color: var(--paper); border-color: var(--ink);
+            background: var(--ink);
+            color: var(--paper);
+            border-color: var(--ink);
         }
 
         /* 頁面系統 */
-        .page { display: none; padding-top: 72px; min-height: 100vh; }
-        .page.active { display: block; }
+        .page {
+            display: none;
+            padding-top: 72px;
+            min-height: 100vh;
+        }
+
+        .page.active {
+            display: block;
+        }
 
         /* Hero 區塊 */
-        .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 72px); }
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: calc(100vh - 72px);
+        }
+
         .hero-left {
-            padding: 5rem 4rem 5rem 3rem; display: flex; flex-direction: column;
-            justify-content: space-between; border-right: 1px solid var(--border);
+            padding: 5rem 4rem 5rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid var(--border);
         }
+
         .hero-eyebrow {
-            font-family: 'DM Mono', monospace; font-size: 0.68rem;
-            letter-spacing: 2px; text-transform: uppercase; color: var(--accent);
-            display: flex; align-items: center; gap: 0.8rem;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
+
         .hero-eyebrow::before {
-            content: ''; display: inline-block;
-            width: 28px; height: 1px; background: var(--accent);
+            content: '';
+            display: inline-block;
+            width: 28px;
+            height: 1px;
+            background: var(--accent);
         }
+
         .hero-name {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(6rem, 12vw, 11rem);
-            line-height: 0.88; letter-spacing: -2px;
-            color: var(--ink); margin-top: 2rem;
+            line-height: 0.88;
+            letter-spacing: -2px;
+            color: var(--ink);
+            margin-top: 2rem;
         }
-        .hero-name .line2 { color: var(--accent); display: block; padding-left: 1.5rem; }
-        .hero-desc { margin-top: 3rem; max-width: 400px; }
+
+        .hero-name .line2 {
+            color: var(--accent);
+            display: block;
+            padding-left: 1.5rem;
+        }
+
+        .hero-desc {
+            margin-top: 3rem;
+            max-width: 400px;
+        }
+
         .hero-desc p {
-            font-size: 0.95rem; font-weight: 300;
-            color: var(--muted); line-height: 1.9;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.9;
         }
-        .hero-bottom { display: flex; align-items: center; gap: 2rem; margin-top: 3rem; }
+
+        .hero-bottom {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
         .btn-primary {
-            font-family: 'DM Mono', monospace; font-size: 0.72rem;
-            letter-spacing: 1.5px; text-transform: uppercase;
-            background: var(--ink); color: var(--paper);
-            text-decoration: none; padding: 14px 28px;
-            display: inline-block; cursor: none;
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background: var(--ink);
+            color: var(--paper);
+            text-decoration: none;
+            padding: 14px 28px;
+            display: inline-block;
+            cursor: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid var(--ink);
-            position: relative; overflow: hidden;
+            position: relative;
+            overflow: hidden;
         }
+
         .btn-primary::after {
-            content: ''; position: absolute; inset: 0;
-            background: var(--accent); transform: translateX(-100%);
-            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); z-index: 0;
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent);
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 0;
         }
-        .btn-primary span { position: relative; z-index: 1; }
-        .btn-primary:hover::after { transform: translateX(0); }
-        .btn-primary:hover { border-color: var(--accent); }
+
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary:hover::after {
+            transform: translateX(0);
+        }
+
+        .btn-primary:hover {
+            border-color: var(--accent);
+        }
+
         .btn-ghost {
-            font-size: 0.78rem; color: var(--muted);
-            text-decoration: none; cursor: none;
-            display: flex; align-items: center; gap: 6px;
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-decoration: none;
+            cursor: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
             transition: color 0.25s;
-            background: none; border: none; font-family: inherit;
+            background: none;
+            border: none;
+            font-family: inherit;
         }
-        .btn-ghost:hover { color: var(--accent); }
-        .btn-ghost .arrow { transition: transform 0.3s; }
-        .btn-ghost:hover .arrow { transform: translateX(4px); }
+
+        .btn-ghost:hover {
+            color: var(--accent);
+        }
+
+        .btn-ghost .arrow {
+            transition: transform 0.3s;
+        }
+
+        .btn-ghost:hover .arrow {
+            transform: translateX(4px);
+        }
 
         /* 技能格子 */
-        .hero-right { display: flex; flex-direction: column; }
-        .hero-skills { display: grid; grid-template-columns: 1fr 1fr; flex: 1; }
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-skills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            flex: 1;
+        }
+
         .skill-cell {
             padding: 3.5rem 2.5rem;
             border-right: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
             transition: background 0.3s ease;
-            position: relative; overflow: hidden;
+            position: relative;
+            overflow: hidden;
         }
-        .skill-cell:nth-child(2n) { border-right: none; }
-        .skill-cell:nth-child(3), .skill-cell:nth-child(4) { border-bottom: none; }
-        .skill-cell:hover { background: var(--faint); }
+
+        .skill-cell:nth-child(2n) {
+            border-right: none;
+        }
+
+        .skill-cell:nth-child(3),
+        .skill-cell:nth-child(4) {
+            border-bottom: none;
+        }
+
+        .skill-cell:hover {
+            background: var(--faint);
+        }
+
         .skill-cell::before {
-            content: attr(data-num); position: absolute;
-            top: 1.2rem; right: 1.5rem;
-            font-family: 'Bebas Neue', sans-serif; font-size: 4rem;
-            color: var(--ink); opacity: 0.04; line-height: 1;
+            content: attr(data-num);
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            color: var(--ink);
+            opacity: 0.04;
+            line-height: 1;
         }
-        .skill-icon { font-size: 1.8rem; margin-bottom: 1.2rem; display: block; }
+
+        .skill-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+
         .skill-cell h3 {
-            font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem;
-            letter-spacing: 1px; color: var(--ink); margin-bottom: 0.5rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
         }
+
         .skill-cell p {
-            font-size: 0.75rem; color: var(--muted);
-            font-weight: 300; line-height: 1.7; letter-spacing: 0.3px;
+            font-size: 0.75rem;
+            color: var(--muted);
+            font-weight: 300;
+            line-height: 1.7;
+            letter-spacing: 0.3px;
         }
 
         /* 跑馬燈 */
         .marquee-bar {
-            background: var(--ink); padding: 0.85rem 0;
-            overflow: hidden; white-space: nowrap;
+            background: var(--ink);
+            padding: 0.85rem 0;
+            overflow: hidden;
+            white-space: nowrap;
         }
-        .marquee-track { display: inline-flex; animation: marquee 20s linear infinite; }
+
+        .marquee-track {
+            display: inline-flex;
+            animation: marquee 20s linear infinite;
+        }
+
         .marquee-item {
-            font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem;
-            letter-spacing: 3px; color: var(--paper);
-            margin-right: 3rem; opacity: 0.7;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            color: var(--paper);
+            margin-right: 3rem;
+            opacity: 0.7;
         }
-        .marquee-item.accent { color: var(--accent); opacity: 1; }
-        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        .marquee-item.accent {
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
 
         /* 精選作品 */
-        .featured { padding: 6rem 3rem; border-top: 1px solid var(--border); }
+        .featured {
+            padding: 6rem 3rem;
+            border-top: 1px solid var(--border);
+        }
+
         .section-header {
-            display: flex; justify-content: space-between;
-            align-items: flex-end; margin-bottom: 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
         }
+
         .section-label {
-            font-family: 'DM Mono', monospace; font-size: 0.65rem;
-            letter-spacing: 2.5px; text-transform: uppercase;
-            color: var(--accent); margin-bottom: 0.8rem;
-            display: flex; align-items: center; gap: 0.6rem;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
         }
+
         .section-label::before {
-            content: ''; display: inline-block;
-            width: 20px; height: 1px; background: var(--accent);
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 1px;
+            background: var(--accent);
         }
+
         .section-title {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
-            letter-spacing: 1px; line-height: 1; color: var(--ink);
+            letter-spacing: 1px;
+            line-height: 1;
+            color: var(--ink);
         }
-        .work-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5px; background: var(--border); }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5px;
+            background: var(--border);
+        }
+
         .work-card {
-            background: var(--paper); padding: 3rem;
-            text-decoration: none; color: inherit;
-            display: flex; flex-direction: column; gap: 1.5rem;
-            cursor: none; transition: background 0.3s ease;
-            position: relative; overflow: hidden;
+            background: var(--paper);
+            padding: 3rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            cursor: none;
+            transition: background 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .work-card:hover { background: var(--cream); }
+
+        .work-card:hover {
+            background: var(--cream);
+        }
+
         .work-card-num {
-            font-family: 'DM Mono', monospace; font-size: 0.65rem;
-            color: var(--muted); letter-spacing: 1px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--muted);
+            letter-spacing: 1px;
         }
+
         .work-card h3 {
-            font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem;
-            letter-spacing: 1px; line-height: 1; color: var(--ink);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            line-height: 1;
+            color: var(--ink);
         }
-        .work-card.small h3 { font-size: 1.6rem; }
+
+        .work-card.small h3 {
+            font-size: 1.6rem;
+        }
+
         .work-card p {
-            font-size: 0.82rem; color: var(--muted);
-            font-weight: 300; line-height: 1.7; max-width: 400px;
+            font-size: 0.82rem;
+            color: var(--muted);
+            font-weight: 300;
+            line-height: 1.7;
+            max-width: 400px;
         }
+
         .work-card-tag {
-            display: inline-block; font-family: 'DM Mono', monospace;
-            font-size: 0.62rem; letter-spacing: 1.5px;
-            text-transform: uppercase; padding: 4px 10px;
-            border: 1px solid var(--border); color: var(--muted);
-            align-self: flex-start; margin-top: auto;
+            display: inline-block;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            align-self: flex-start;
+            margin-top: auto;
         }
+
         .work-card-arrow {
-            position: absolute; bottom: 2rem; right: 2rem;
-            font-size: 1.2rem; color: var(--accent);
-            opacity: 0; transform: translate(-6px, 6px);
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-size: 1.2rem;
+            color: var(--accent);
+            opacity: 0;
+            transform: translate(-6px, 6px);
             transition: all 0.3s ease;
         }
-        .work-card:hover .work-card-arrow { opacity: 1; transform: translate(0, 0); }
+
+        .work-card:hover .work-card-arrow {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
 
         /* 關於頁面 */
-        .about-layout { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 72px); }
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: calc(100vh - 72px);
+        }
+
         .about-left {
             padding: 6rem 4rem 6rem 3rem;
             border-right: 1px solid var(--border);
-            display: flex; flex-direction: column; justify-content: space-between;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
+
         .about-heading {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(4rem, 8vw, 7.5rem);
-            line-height: 0.9; letter-spacing: -1px;
+            line-height: 0.9;
+            letter-spacing: -1px;
         }
-        .about-heading .name { color: var(--accent); display: block; }
-        .about-bio { max-width: 440px; margin-top: 3rem; }
+
+        .about-heading .name {
+            color: var(--accent);
+            display: block;
+        }
+
+        .about-bio {
+            max-width: 440px;
+            margin-top: 3rem;
+        }
+
         .about-bio p {
-            font-size: 0.88rem; font-weight: 300;
-            color: var(--muted); line-height: 1.9; margin-bottom: 1.2rem;
+            font-size: 0.88rem;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 1.2rem;
         }
+
         .skills-list {
-            margin-top: 3rem; display: grid;
-            grid-template-columns: 1fr 1fr; gap: 1px;
-            background: var(--border); border: 1px solid var(--border);
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
         }
+
         .skill-row {
-            background: var(--paper); padding: 1rem 1.2rem;
-            display: flex; flex-direction: column; gap: 0.3rem;
+            background: var(--paper);
+            padding: 1rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
             transition: background 0.25s;
         }
-        .skill-row:hover { background: var(--cream); }
-        .skill-row strong {
-            font-size: 0.72rem; font-weight: 500;
-            letter-spacing: 1px; text-transform: uppercase; color: var(--ink);
+
+        .skill-row:hover {
+            background: var(--cream);
         }
+
+        .skill-row strong {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+
         .skill-row span {
             font-family: 'DM Mono', monospace;
-            font-size: 0.65rem; color: var(--muted);
+            font-size: 0.65rem;
+            color: var(--muted);
         }
 
         /* 時間軸 */
-        .about-right { padding: 6rem 3rem 6rem 4rem; }
+        .about-right {
+            padding: 6rem 3rem 6rem 4rem;
+        }
+
         .timeline-label {
-            font-family: 'DM Mono', monospace; font-size: 0.65rem;
-            letter-spacing: 2.5px; text-transform: uppercase;
-            color: var(--accent); margin-bottom: 3rem;
-            display: flex; align-items: center; gap: 0.6rem;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
         }
+
         .timeline-label::before {
-            content: ''; display: inline-block;
-            width: 20px; height: 1px; background: var(--accent);
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 1px;
+            background: var(--accent);
         }
-        .timeline { position: relative; }
+
+        .timeline {
+            position: relative;
+        }
+
         .timeline::before {
-            content: ''; position: absolute;
-            left: 0; top: 6px; bottom: 6px;
-            width: 1px; background: var(--border);
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            bottom: 6px;
+            width: 1px;
+            background: var(--border);
         }
-        .tl-item { position: relative; padding: 0 0 3.5rem 2.5rem; }
+
+        .tl-item {
+            position: relative;
+            padding: 0 0 3.5rem 2.5rem;
+        }
+
         .tl-item::before {
-            content: ''; position: absolute;
-            left: -4px; top: 5px; width: 9px; height: 9px;
-            background: var(--paper); border: 1.5px solid var(--accent);
-            border-radius: 50%; transition: background 0.25s;
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 5px;
+            width: 9px;
+            height: 9px;
+            background: var(--paper);
+            border: 1.5px solid var(--accent);
+            border-radius: 50%;
+            transition: background 0.25s;
         }
-        .tl-item:hover::before { background: var(--accent); }
+
+        .tl-item:hover::before {
+            background: var(--accent);
+        }
+
         .tl-date {
-            font-family: 'DM Mono', monospace; font-size: 0.62rem;
-            letter-spacing: 1.5px; color: var(--muted); margin-bottom: 0.5rem;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 1.5px;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
         }
+
         .tl-title {
-            font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem;
-            letter-spacing: 1px; color: var(--ink);
-            line-height: 1; margin-bottom: 0.4rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            color: var(--ink);
+            line-height: 1;
+            margin-bottom: 0.4rem;
         }
+
         .tl-desc {
-            font-size: 0.8rem; font-weight: 300;
-            color: var(--muted); line-height: 1.7;
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.7;
         }
 
         /* 狀態條 */
         .status-strip {
-            display: flex; gap: 2rem; flex-wrap: wrap;
-            padding: 2rem 3rem; background: var(--cream);
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 2rem 3rem;
+            background: var(--cream);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
         }
-        .status-item { display: flex; flex-direction: column; gap: 0.3rem; }
+
+        .status-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
         .status-label {
-            font-family: 'DM Mono', monospace; font-size: 0.58rem;
-            letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.58rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
         }
-        .status-value { font-size: 0.82rem; font-weight: 500; color: var(--ink); }
+
+        .status-value {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
         .status-dot {
-            display: inline-block; width: 6px; height: 6px;
-            background: #3acc75; border-radius: 50%;
-            margin-right: 5px; animation: pulse 2s ease-in-out infinite;
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #3acc75;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: pulse 2s ease-in-out infinite;
         }
+
         @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
         }
 
         /* Footer */
         footer {
-            padding: 3rem; display: flex;
-            justify-content: space-between; align-items: center;
+            padding: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-top: 1px solid var(--border);
         }
+
         footer p {
-            font-family: 'DM Mono', monospace; font-size: 0.65rem;
-            letter-spacing: 1px; color: var(--muted);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+            color: var(--muted);
         }
+
         footer .footer-logo {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.2rem; letter-spacing: 3px; color: var(--ink);
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            color: var(--ink);
         }
-        footer .footer-logo span { color: var(--accent); }
+
+        footer .footer-logo span {
+            color: var(--accent);
+        }
 
         /* 雙語切換 */
-        [data-lang="en"] { display: none; }
-        body.lang-en [data-lang="tw"] { display: none; }
-        body.lang-en [data-lang="en"] { display: revert; }
-
-        /* 頁面切換動畫 */
-        .page.active { animation: pageIn 0.5s cubic-bezier(0.4,0,0.2,1); }
-        @keyframes pageIn {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
+        [data-lang="en"] {
+            display: none;
         }
 
-        .nav-mobile-btn { display: none; background: none; border: none; color: var(--ink); cursor: none; }
-        .mobile-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--paper); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem 1.5rem; z-index: 1000; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .mobile-menu a, .mobile-menu button { display: block; width: 100%; text-align: left; color: var(--ink); text-decoration: none; padding: 1rem 0; font-weight: 500; border-bottom: 1px solid var(--border); cursor: none; background: none; border: none; font-family: inherit; font-size: 1rem; }
-        .mobile-menu .nav-cta { color: var(--accent); font-weight: 700; }
+        body.lang-en [data-lang="tw"] {
+            display: none;
+        }
+
+        body.lang-en [data-lang="en"] {
+            display: revert;
+        }
+
+        /* 頁面切換動畫 */
+        .page.active {
+            animation: pageIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes pageIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-mobile-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--ink);
+            cursor: none;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: var(--paper);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 1.5rem 1.5rem;
+            z-index: 1000;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .mobile-menu a,
+        .mobile-menu button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            color: var(--ink);
+            text-decoration: none;
+            padding: 1rem 0;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+            cursor: none;
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .mobile-menu .nav-cta {
+            color: var(--accent);
+            font-weight: 700;
+        }
 
         /* 響應式 */
         @media (max-width: 900px) {
-            nav { padding: 1.2rem 1.5rem; }
-            .nav-right { gap: 1rem; }
-            .nav-links { display: none; }
-            .nav-mobile-btn { display: block; }
-            .hero { grid-template-columns: 1fr; }
-            .hero-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
-            .hero-skills { grid-template-columns: 1fr 1fr; }
-            .skill-cell { padding: 2rem 1.2rem; }
-            .featured { padding: 4rem 1.5rem; }
-            .work-grid { grid-template-columns: 1fr; }
-            .work-card { padding: 2rem 1.5rem; }
-            .about-layout { grid-template-columns: 1fr; }
-            .about-left { border-right: none; border-bottom: 1px solid var(--border); padding: 4rem 1.5rem; }
-            .about-right { padding: 4rem 1.5rem; }
-            .status-strip { padding: 1.5rem; gap: 1.5rem; }
-            footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+            nav {
+                padding: 1.2rem 1.5rem;
+            }
+
+            .nav-right {
+                gap: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-mobile-btn {
+                display: block;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-skills {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .skill-cell {
+                padding: 2rem 1.2rem;
+            }
+
+            .featured {
+                padding: 4rem 1.5rem;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .work-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .about-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .about-left {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 4rem 1.5rem;
+            }
+
+            .about-right {
+                padding: 4rem 1.5rem;
+            }
+
+            .status-strip {
+                padding: 1.5rem;
+                gap: 1.5rem;
+            }
+
+            footer {
+                padding: 2rem 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
         }
+
         @media (max-width: 480px) {
-            .hero-name { font-size: clamp(4rem, 16vw, 6rem); }
-            .hero-skills { grid-template-columns: 1fr; }
-            .skill-cell { border-right: none !important; }
-            .skill-cell:nth-child(3) { border-bottom: 1px solid var(--border) !important; }
-            .skills-list { grid-template-columns: 1fr; }
-            .about-heading { font-size: clamp(3rem, 14vw, 5rem); }
+            .hero-name {
+                font-size: clamp(4rem, 16vw, 6rem);
+            }
+
+            .hero-skills {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-cell {
+                border-right: none !important;
+            }
+
+            .skill-cell:nth-child(3) {
+                border-bottom: 1px solid var(--border) !important;
+            }
+
+            .skills-list {
+                grid-template-columns: 1fr;
+            }
+
+            .about-heading {
+                font-size: clamp(3rem, 14vw, 5rem);
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="cursor" id="cursor"></div>
@@ -448,7 +992,12 @@
             </ul>
             <button class="lang-btn" onclick="toggleLanguage()">中文 / EN</button>
             <button class="nav-mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
             </button>
         </div>
         <div class="mobile-menu" id="mobile-menu">
@@ -465,24 +1014,26 @@
             <div class="hero-left">
                 <div>
                     <!-- 💡 修改這裡：Hero 小標籤 -->
-                    <p class="hero-eyebrow" data-tw="創作者 × 開發者 × AI" data-en="Creator × Developer × AI">創作者 × 開發者 × AI</p>
-                    
+                    <p class="hero-eyebrow" data-tw="創作者 × 開發者 × AI" data-en="Creator × Developer × AI">創作者 × 開發者 × AI
+                    </p>
+
                     <h1 class="hero-name">
                         NASH
                         <span class="line2">WU</span>
                     </h1>
-                    
+
                     <!-- 💡 修改這裡：Hero 描述文字 -->
                     <div class="hero-desc">
                         <div data-lang="tw">
                             <p>用鏡頭記錄世界，用程式解決問題，用 AI 提升效率。從台灣到世界，持續探索、創作、成長。</p>
                         </div>
                         <div data-lang="en">
-                            <p>Documenting the world through lens, solving problems with code, boosting efficiency with AI. From Taiwan to the world, constantly exploring, creating, and growing.</p>
+                            <p>Documenting the world through lens, solving problems with code, boosting efficiency with
+                                AI. From Taiwan to the world, constantly exploring, creating, and growing.</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="hero-bottom">
                     <a href="guide/index.html" class="btn-primary">
                         <span data-tw="探索作品" data-en="View Works">探索作品</span>
@@ -500,17 +1051,20 @@
                     <div class="skill-cell" data-num="01">
                         <span class="skill-icon">🎬</span>
                         <h3 data-tw="影像創作" data-en="Content Creator">影像創作</h3>
-                        <p data-tw="旅遊 VLOG · 生活記錄 · 故事敘事" data-en="Travel Vlogs · Life Stories · Narratives">旅遊 VLOG · 生活記錄 · 故事敘事</p>
+                        <p data-tw="旅遊 VLOG · 生活記錄 · 故事敘事" data-en="Travel Vlogs · Life Stories · Narratives">旅遊 VLOG ·
+                            生活記錄 · 故事敘事</p>
                     </div>
                     <div class="skill-cell" data-num="02">
                         <span class="skill-icon">💻</span>
                         <h3 data-tw="程式開發" data-en="Developer">程式開發</h3>
-                        <p data-tw="Python · 網站開發 · 自動化系統" data-en="Python · Web Dev · Automation">Python · 網站開發 · 自動化系統</p>
+                        <p data-tw="Python · 網站開發 · 自動化系統" data-en="Python · Web Dev · Automation">Python · 網站開發 · 自動化系統
+                        </p>
                     </div>
                     <div class="skill-cell" data-num="03">
                         <span class="skill-icon">🤖</span>
                         <h3 data-tw="AI 應用" data-en="AI Expert">AI 應用</h3>
-                        <p data-tw="Claude · ChatGPT · Ollama · 工作流優化" data-en="Claude · ChatGPT · Ollama · Workflow">Claude · ChatGPT · Ollama · 工作流優化</p>
+                        <p data-tw="Claude · ChatGPT · Ollama · 工作流優化" data-en="Claude · ChatGPT · Ollama · Workflow">
+                            Claude · ChatGPT · Ollama · 工作流優化</p>
                     </div>
                     <div class="skill-cell" data-num="04">
                         <span class="skill-icon">🌐</span>
@@ -543,7 +1097,9 @@
                 <a href="youtube/index.html" class="work-card">
                     <p class="work-card-num">001</p>
                     <h3 data-tw="YouTube 頻道" data-en="YouTube Channel">YouTube 頻道</h3>
-                    <p data-tw="旅遊 VLOG · 海外生活 · AI 創作。記錄從紐西蘭到世界各地的真實旅途。" data-en="Travel vlogs · Life abroad · AI creation. Authentic journeys from NZ to the world.">旅遊 VLOG · 海外生活 · AI 創作。記錄從紐西蘭到世界各地的真實旅途。</p>
+                    <p data-tw="旅遊 VLOG · 海外生活 · AI 創作。記錄從紐西蘭到世界各地的真實旅途。"
+                        data-en="Travel vlogs · Life abroad · AI creation. Authentic journeys from NZ to the world.">旅遊
+                        VLOG · 海外生活 · AI 創作。記錄從紐西蘭到世界各地的真實旅途。</p>
                     <span class="work-card-tag" data-tw="影像創作" data-en="Filmmaking">影像創作</span>
                     <span class="work-card-arrow">↗</span>
                 </a>
@@ -561,7 +1117,8 @@
 
         <footer>
             <div class="footer-logo">Nash<span>.</span>Wu</div>
-            <p>© 2026 Nash Wu · <span data-tw="用創作和技術探索世界" data-en="Exploring the world through creativity & code">用創作和技術探索世界</span></p>
+            <p>© 2026 Nash Wu · <span data-tw="用創作和技術探索世界"
+                    data-en="Exploring the world through creativity & code">用創作和技術探索世界</span></p>
         </footer>
     </section>
 
@@ -595,7 +1152,7 @@
                         <span data-tw="創作者" data-en="CREATOR">創作者</span>
                         <span class="name" data-tw="開發者" data-en="DEVELOPER">開發者</span>
                     </h1>
-                    
+
                     <!-- 💡 修改這裡：個人簡介 -->
                     <div class="about-bio">
                         <div data-lang="tw">
@@ -604,9 +1161,12 @@
                             <p>同時熱衷於用 Python 和 AI 工具打造自動化系統，讓創作流程更高效。相信科技和藝術結合，能創造出更有趣的東西。</p>
                         </div>
                         <div data-lang="en">
-                            <p>I'm Nash Wu, a travel content creator documenting the world through my lens. Based in Dunedin, New Zealand, running YouTube channel @Nash_Wu_17.</p>
-                            <p>From Taiwan to Korea, Thailand, Vietnam, Spain, Singapore, New Zealand — every journey is growth, every story deserves to be told.</p>
-                            <p>Also passionate about building automation systems with Python and AI tools. Believe the fusion of technology and art creates something truly interesting.</p>
+                            <p>I'm Nash Wu, a travel content creator documenting the world through my lens. Based in
+                                Dunedin, New Zealand, running YouTube channel @Nash_Wu_17.</p>
+                            <p>From Taiwan to Korea, Thailand, Vietnam, Spain, Singapore, New Zealand — every journey is
+                                growth, every story deserves to be told.</p>
+                            <p>Also passionate about building automation systems with Python and AI tools. Believe the
+                                fusion of technology and art creates something truly interesting.</p>
                         </div>
                     </div>
                 </div>
@@ -634,7 +1194,7 @@
 
             <div class="about-right">
                 <p class="timeline-label" data-tw="成長時軸" data-en="Timeline">成長時軸</p>
-                
+
                 <div class="timeline">
                     <!-- ========================================
                          💡 新增時間軸項目：複製這個區塊
@@ -645,7 +1205,9 @@
                     <div class="tl-item">
                         <p class="tl-date">2025.05</p>
                         <p class="tl-title" data-tw="個人品牌網站 v2.0" data-en="Personal Site v2.0">個人品牌網站 v2.0</p>
-                        <p class="tl-desc" data-tw="重新設計網站架構，整合 YouTube、專案展示、課程平台。模組化設計便於未來擴充。" data-en="Redesigned site architecture, integrating YouTube, projects, courses. Modular design for expansion.">重新設計網站架構，整合 YouTube、專案展示、課程平台。模組化設計便於未來擴充。</p>
+                        <p class="tl-desc" data-tw="重新設計網站架構，整合 YouTube、專案展示、課程平台。模組化設計便於未來擴充。"
+                            data-en="Redesigned site architecture, integrating YouTube, projects, courses. Modular design for expansion.">
+                            重新設計網站架構，整合 YouTube、專案展示、課程平台。模組化設計便於未來擴充。</p>
                     </div>
                     <!--
                     <div class="tl-item">
@@ -663,18 +1225,21 @@
                     <div class="tl-item">
                         <p class="tl-date">2025.01</p>
                         <p class="tl-title" data-tw="YouTube 頻道創立" data-en="YouTube Launch">YouTube 頻道創立</p>
-                        <p class="tl-desc" data-tw="開始經營 @Nash_Wu_17 頻道，記錄旅遊 VLOG、海外生活、AI 學習心得。" data-en="Started @Nash_Wu_17 channel, documenting travel, life, AI learning.">開始經營 @Nash_Wu_17 頻道，記錄旅遊 VLOG、海外生活、AI 學習心得。</p>
+                        <p class="tl-desc" data-tw="開始經營 @Nash_Wu_17 頻道，記錄旅遊 VLOG、海外生活、AI 學習心得。"
+                            data-en="Started @Nash_Wu_17 channel, documenting travel, life, AI learning.">開始經營
+                            @Nash_Wu_17 頻道，記錄旅遊 VLOG、海外生活、AI 學習心得。</p>
                     </div>
-                    
+
                     <!-- 💡 在這裡新增更多時間軸項目（複製上面的 <div class="tl-item">...</div> 區塊） -->
-                    
+
                 </div>
             </div>
         </div>
 
         <footer>
             <div class="footer-logo">N<span>.</span>WU</div>
-            <p>© 2025 Nash Wu · <span data-tw="用創作和技術探索世界" data-en="Exploring through creativity & code">用創作和技術探索世界</span></p>
+            <p>© 2025 Nash Wu · <span data-tw="用創作和技術探索世界"
+                    data-en="Exploring through creativity & code">用創作和技術探索世界</span></p>
         </footer>
     </section>
 
@@ -748,4 +1313,5 @@
         document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
     </script>
 </body>
+
 </html>
