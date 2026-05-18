@@ -1,0 +1,302 @@
+<!--
+=======================================================
+  CREATOR WEBSITE TEMPLATE
+  Based on Nash Wu's personal site design
+  
+  HOW TO USE — Search for these placeholders and replace:
+  -------------------------------------------------------
+  YOUR_NAME         → Your name (e.g. Nash Wu)
+  YOUR_FAVICON.png  → Path to your favicon/logo image
+  YOUR_PHOTO.jpg    → Path to your profile photo
+  YOUR_SLOGAN       → Your tagline (e.g. 帶你看不一樣的世界)
+  YOUR_HERO_DESCRIPTION → Hero section body text
+  YOUR_ROLE         → Your role (e.g. 旅遊創作者)
+  YOUR_LOCATION     → Where you are (e.g. New Zealand)
+  YOUR_CITY         → City / status (e.g. 奧克蘭 · 旅居中)
+  YOUR_BIO_LINE_1   → About section first paragraph
+  YOUR_BIO_LINE_2   → About section second paragraph
+  YOUR_EMAIL@gmail.com → Your contact email
+  YOUR_COLLAB_TYPES → Types of collaborations you accept
+  YOUR_CONTACT_DESC → Contact section description
+
+  TOPICS (replace all 3):
+  TOPIC 1 / TOPIC 2 / TOPIC 3 → Your content pillars
+
+  TAGS (replace all 5):
+  TAG_1 … TAG_5 → Your content tags
+
+  COUNTRIES (replace all 7):
+  COUNTRY_1 … COUNTRY_7 → Places you've visited
+
+  SOCIAL LINKS:
+  YOUR_CHANNEL   → YouTube channel handle
+  YOUR_IG        → Instagram handle
+  YOUR_THREADS   → Threads handle
+  YOUR_VOCUS     → Vocus path
+  YOUR_LINKTREE  → Linktree handle
+
+  MARQUEE:
+  Edit the items array in the <script> section
+=======================================================
+-->
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <link rel="icon" type="image/x-icon" href="YOUR_FAVICON.png">
+    <link rel="icon" type="image/png" href="YOUR_FAVICON.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline';
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        font-src https://fonts.gstatic.com;
+        img-src 'self' https: data:;
+        frame-src https://www.youtube.com;
+        connect-src 'self' https://formsubmit.co;
+    ">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+    <meta name="description" content="YOUR_NAME — 頻道描述">
+    <meta property="og:title" content="Nash Wu — Creator & YouTuber">
+    <meta property="og:description" content="頻道描述">
+    <title>成果展現 — YOUR_NAME</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --ink: #0a0a08;
+            --paper: #f2ede6;
+            --cream: #e8e1d6;
+            --accent: #c8401a;
+            --muted: #7a7570;
+            --faint: rgba(10,10,8,0.06);
+            --border: rgba(10,10,8,0.12);
+        }
+
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; cursor: none; }
+
+        /* Custom Cursor */
+        .cursor { position: fixed; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease; mix-blend-mode: multiply; }
+        .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1.5px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: transform 0.18s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease; opacity: 0.5; }
+
+        /* Grain Overlay */
+        body::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9000; opacity: 0.4; }
+
+        /* Nav */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 3rem; background: rgba(242,237,230,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+        .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 3px; color: var(--ink); text-decoration: none; cursor: none; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); text-decoration: none; cursor: none; position: relative; transition: color 0.25s; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.35s cubic-bezier(0.4,0,0.2,1); }
+        .nav-links a:hover { color: var(--ink); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta { background: var(--accent) !important; color: var(--paper) !important; padding: 0.5rem 1.2rem !important; border-radius: 4px !important; }
+        .nav-mobile-btn { display: none; background: none; border: none; color: var(--ink); cursor: none; }
+        .mobile-menu { display: none; position: fixed; top: 64px; left: 0; width: 100%; background: var(--paper); border-bottom: 1px solid var(--border); padding: 1.5rem 3rem; z-index: 499; }
+        .mobile-menu a { display: block; color: var(--ink); text-decoration: none; padding: 0.8rem 0; font-weight: 500; border-bottom: 1px solid var(--border); cursor: none; }
+
+        /* Hero */
+        #hero { padding: 120px 3rem 4rem; text-align: center; background: var(--cream); border-bottom: 1px solid var(--border); }
+        .hero-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 2px; margin-bottom: 1rem; }
+        .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 8vw, 6rem); color: var(--ink); line-height: 0.9; margin-bottom: 1.5rem; }
+        .hero-title em { font-style: normal; color: var(--accent); }
+        .hero-desc { max-width: 600px; margin: 0 auto; font-size: 1rem; line-height: 1.6; color: var(--muted); }
+
+        /* Results Grid */
+        #results { padding: 5rem 3rem; }
+        .results-inner { max-width: 1300px; margin: 0 auto; }
+        .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        @media (max-width: 1024px) { .results-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .results-grid { grid-template-columns: 1fr; } }
+
+        /* Result Card */
+        .result-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: all 0.4s cubic-bezier(0.4,0,0.2,1); text-decoration: none; color: inherit; display: flex; flex-direction: column; cursor: none; }
+        .result-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 15px 35px rgba(10,10,8,0.1); }
+        .result-thumb { position: relative; aspect-ratio: 16/10; overflow: hidden; background: var(--paper); }
+        .result-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); filter: grayscale(20%); }
+        .result-card:hover .result-thumb img { transform: scale(1.08); filter: grayscale(0%); }
+        .result-info { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+        .result-date { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--accent); margin-bottom: 0.6rem; letter-spacing: 1px; }
+        .result-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--ink); margin-bottom: 0.8rem; line-height: 1.1; letter-spacing: 0.5px; }
+        .result-excerpt { font-size: 0.85rem; color: var(--muted); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 1.5rem; }
+        .result-more { margin-top: auto; font-family: 'DM Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--ink); display: flex; align-items: center; gap: 8px; transition: color 0.3s; }
+        .result-card:hover .result-more { color: var(--accent); }
+
+        /* Footer */
+        footer { padding: 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); background: var(--paper); flex-wrap: wrap; gap: 1rem; }
+        .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 3px; color: var(--ink); }
+        .footer-logo span { color: var(--accent); }
+        footer p { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 1px; color: var(--muted); }
+
+        /* Animations */
+        .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            nav { padding: 1.2rem 1.5rem; }
+            .nav-links { display: none; }
+            .nav-mobile-btn { display: block; }
+            #hero { padding: 100px 1.5rem 3rem; }
+            #results { padding: 3rem 1.5rem; }
+            footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Nav -->
+<nav id="navbar">
+    <a href="../index.html" class="logo">Y<span>.</span>NAME</a>
+    <ul class="nav-links">
+        <li><a href="../index.html">首頁</a></li>
+        <li><a href="#results">成果展示</a></li>
+        <li><a href="mailto:YOUR_EMAIL@gmail.com" class="nav-cta">聯絡我</a></li>
+    </ul>
+    <button class="nav-mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="../index.html">首頁</a>
+        <a href="#results">成果展示</a>
+        <a href="mailto:YOUR_EMAIL@gmail.com">聯絡我</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<header id="hero">
+    <div class="fade-up">
+        <div class="hero-label">PORTFOLIO & RESULTS</div>
+        <h1 class="hero-title">成果<em>展現</em></h1>
+        <p class="hero-desc">這裡記錄了我所有的專案、實驗與學習成果。從最新的開發進度到早期的探索，每一個格子都代表了一個里程碑。</p>
+    </div>
+</header>
+
+<!-- Results Grid -->
+<section id="results">
+    <div class="results-inner">
+        <div class="results-grid">
+            
+            <!-- 
+                =======================================================
+                如何新增一個成果 (資料夾整理法)
+                =======================================================
+                1. 在 blog 資料夾下建立一個新資料夾 (例如: my-project)
+                2. 在該資料夾內建立 index.html (詳細內容頁面)
+                3. 複製下方 <a class="result-card"> ... </a> 區塊並修改:
+                   - href="資料夾名稱/index.html"
+                   - 圖片、日期、標題、描述
+                =======================================================
+            -->
+
+            <!-- 項目範例 (最新) -->
+            <a href="project-alpha/index.html" class="result-card fade-up">
+                <div class="result-thumb">
+                    <!-- 圖片也可以放在該資料夾內，例如: project-alpha/cover.jpg -->
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800" alt="專案標題">
+                </div>
+                <div class="result-info">
+                    <div class="result-date">2026.05.14 / NEW</div>
+                    <h3 class="result-title">AI 驅動的創意工作流</h3>
+                    <p class="result-excerpt">這是一個使用資料夾管理的範例。專案的所有檔案都放在 project-alpha/ 資料夾中，方便整理...</p>
+                    <div class="result-more">
+                        閱讀更多 
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 項目 2 -->
+            <a href="post-2.html" class="result-card fade-up">
+                <div class="result-thumb">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=800" alt="專案標題">
+                </div>
+                <div class="result-info">
+                    <div class="result-date">2026.04.20</div>
+                    <h3 class="result-title">自動化腳本開發實錄</h3>
+                    <p class="result-excerpt">使用 Python 開發了一套可以自動抓取 YouTube 影片資訊並同步到網站的系統，大幅減少了手動更新的時間...</p>
+                    <div class="result-more">閱讀更多 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+                </div>
+            </a>
+
+            <!-- 項目 3 -->
+            <a href="post-3.html" class="result-card fade-up">
+                <div class="result-thumb">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800" alt="專案標題">
+                </div>
+                <div class="result-info">
+                    <div class="result-date">2026.03.15</div>
+                    <h3 class="result-title">響應式設計的深度探索</h3>
+                    <p class="result-excerpt">在這個專案中，我重新設計了個人網站的行動版介面，專注於極簡主義與流暢的使用者體驗...</p>
+                    <div class="result-more">閱讀更多 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-logo">Y<span>.</span>NAME</div>
+    <p>© <span id="year"></span> YOUR_NAME · 成果記錄</p>
+</footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Custom Cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        cursor.style.left = mx + 'px';
+        cursor.style.top = my + 'px';
+    });
+
+    function animRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + 'px';
+        ring.style.top = ry + 'px';
+        requestAnimationFrame(animRing);
+    }
+    animRing();
+
+    document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.width = '20px'; cursor.style.height = '20px';
+            ring.style.width = '52px'; ring.style.height = '52px';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.style.width = '10px'; cursor.style.height = '10px';
+            ring.style.width = '36px'; ring.style.height = '36px';
+        });
+    });
+
+    // Mobile Menu
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        const m = document.getElementById('mobile-menu');
+        m.style.display = m.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Fade-up observer
+    const obs = new IntersectionObserver(entries => entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+    }), { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

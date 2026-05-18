@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成果標題 — Nash Wu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --ink: #0a0a08; --paper: #f2ede6; --cream: #e8e1d6;
+            --accent: #c8401a; --muted: #7a7570; --border: rgba(10,10,8,0.12);
+        }
+        body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.8; }
+        
+        /* Nav (和主頁一致) */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; background: rgba(242,237,230,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+        .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 3px; color: var(--ink); text-decoration: none; }
+        .logo span { color: var(--accent); }
+        .back-btn { font-family: 'DM Mono', monospace; font-size: 0.72rem; text-transform: uppercase; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .back-btn:hover { color: var(--accent); }
+
+        /* 文章內容 */
+        article { max-width: 800px; margin: 0 auto; padding: 120px 2rem 5rem; }
+        .post-header { margin-bottom: 4rem; text-align: center; }
+        .post-date { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--accent); margin-bottom: 1rem; }
+        .post-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 6vw, 5rem); line-height: 1; margin-bottom: 2rem; }
+        .post-hero-img { width: 100%; border-radius: 4px; border: 1px solid var(--border); margin-bottom: 4rem; }
+        
+        .post-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; margin: 3rem 0 1.5rem; color: var(--ink); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        .post-content p { margin-bottom: 1.5rem; color: #444; }
+        .post-content img { width: 100%; margin: 2rem 0; border-radius: 4px; }
+        
+        footer { padding: 3rem; text-align: center; border-top: 1px solid var(--border); background: var(--cream); margin-top: 5rem; }
+        footer p { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" class="logo">N<span>.</span>WU</a>
+    <a href="../index.html" class="back-btn">← Back to Gallery</a>
+</nav>
+
+<article>
+    <header class="post-header">
+        <div class="post-date">2026.05.14 / PROJECT LOG</div>
+        <h1 class="post-title">這裡填寫你的專案標題</h1>
+    </header>
+
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1200" alt="Hero Image" class="post-hero-img">
+
+    <div class="post-content">
+        <h2>專案簡介</h2>
+        <p>在這裡寫下關於這個專案的起源、目標或是你想要分享的心路歷程。這個模板已經幫你設定好了舒適的閱讀比例與字體。</p>
+
+        <h2>核心技術</h2>
+        <p>如果你在這個專案中使用了特別的技術（例如 Python 自動化、AI 模型或是特定的前端框架），可以在這裡進行詳細說明。</p>
+        
+        <!-- 如果你有更多圖片，可以這樣放 -->
+        <!-- <img src="image1.jpg" alt="專案截圖"> -->
+
+        <h2>最終成果</h2>
+        <p>最後分享一下專案的結果或是你學到了什麼。你可以放上 Demo 連結或是截圖來展示。檔案都放在同一個資料夾裡，非常容易管理！</p>
+    </div>
+</article>
+
+<footer>
+    <p>© 2026 Nash Wu · 成果詳細記錄</p>
+</footer>
+
+</body>
+</html>
